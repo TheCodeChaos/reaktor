@@ -130,11 +130,23 @@ export const faqItems = [
   },
 ] as const;
 
-export const developers = [
+export interface Developer {
+  readonly id: string;
+  readonly name: string;
+  readonly initials: string;
+  readonly avatar: string;
+  readonly links: {
+    readonly github: string;
+    readonly website?: string;
+  };
+}
+
+export const developers: readonly Developer[] = [
   {
     id: 'ayaan',
     name: 'Ayaan Shaikh',
     initials: 'AS',
+    avatar: 'https://github.com/Ayaan-7091.png',
     links: {
       github: 'https://github.com/Ayaan-7091',
     },
@@ -143,16 +155,28 @@ export const developers = [
     id: 'shravan',
     name: 'Shravan Goswami',
     initials: 'SG',
+    avatar: 'https://github.com/shravanngoswamii.png',
     links: {
       github: 'https://github.com/shravanngoswamii',
       website: 'https://shravangoswami.com/',
     },
   },
-] as const;
+  {
+    id: 'jitendra',
+    name: 'Jitendra Verma',
+    initials: 'JV',
+    avatar: 'https://github.com/jitendravjh.png',
+    links: {
+      github: 'https://github.com/jitendravjh',
+      website: 'https://jitendravjh.github.io',
+    },
+  },
+];
 
 export const authors = {
   ayaan: developers[0],
   shravan: developers[1],
+  jitendra: developers[2],
 } as const;
 
 export const credits = [
