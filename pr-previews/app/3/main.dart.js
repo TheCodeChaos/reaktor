@@ -28128,8 +28128,7 @@ ax5:function ax5(a){this.a=a},
 ax6:function ax6(a){this.a=a},
 a2h:function a2h(a){var _=this
 _.b=_.a=!0
-_.c=0.6
-_.d=0.85
+_.d=_.c=1
 _.f=_.e=!1
 _.r=a
 _.w=0
@@ -95509,10 +95508,10 @@ h=A.h1(n.i(0,"music"))
 g=A.h1(n.i(0,"sfx"))
 f=A.a0P(n.i(0,"musicVol"))
 if(f==null)f=null
-if(f==null)f=0.6
+if(f==null)f=1
 e=A.a0P(n.i(0,"sfxVol"))
 if(e==null)e=null
-if(e==null)e=0.85
+if(e==null)e=1
 n=A.dN(n.i(0,"theme"))
 o=new A.tT(m,l,k,j!==!1,i!==!1,h!==!1,g!==!1,f,e,B.pK[B.h.cE(n==null?0:n,0,4)])
 p.FU(o)
@@ -99977,7 +99976,7 @@ B.h8=new A.iZ(2,"inactive")
 B.h9=new A.iZ(3,"hidden")
 B.jy=new A.iZ(4,"paused")
 B.n6=new A.j_(0,"neon")
-B.ha=new A.tT(9,6,2,!0,!0,!0,!0,0.6,0.85,B.n6)
+B.ha=new A.tT(9,6,2,!0,!0,!0,!0,1,1,B.n6)
 B.Co=new A.Kn(127)
 B.jz=new A.yH(0,"polite")
 B.mY=new A.a2_(0,"polite")
