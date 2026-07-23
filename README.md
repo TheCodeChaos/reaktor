@@ -1,6 +1,15 @@
-# Reaktor
+<p align="center">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="public/logo-dark.svg">
+		<img alt="Reaktor" src="public/logo-light.svg" width="220">
+	</picture>
+</p>
 
-Reaktor website built with Astro.
+<p align="center">
+	Marketing site and blog for Reaktor, a chain reaction strategy game for 2 to 6 players.
+</p>
+
+Built with Astro.
 
 ## Requirements
 
