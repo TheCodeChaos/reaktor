@@ -1,4 +1,4 @@
-name: ChainReactionMax Website PR Preview
+name: Reaktor Website PR Preview
 
 on:
   pull_request:
@@ -35,8 +35,8 @@ jobs:
       - name: Build application for preview
         run: npm run build
         env:
-          BASE_PATH: /ChainReactionMax/pr-previews/${{ github.event.pull_request.number }}/
-          SITE: https://TheCodeChaos.github.io/ChainReactionMax/pr-previews/${{ github.event.pull_request.number }}/
+          BASE_PATH: /reaktor/pr-previews/${{ github.event.pull_request.number }}/
+          SITE: https://TheCodeChaos.github.io/reaktor/pr-previews/${{ github.event.pull_request.number }}/
 
       - name: Add .nojekyll file
         run: touch ./dist/.nojekyll
@@ -56,7 +56,7 @@ jobs:
           message: |
             <!-- preview-url-comment -->
             A preview of this pull request has been deployed.
-            **[https://TheCodeChaos.github.io/ChainReactionMax/pr-previews/${{ github.event.pull_request.number }}/](https://TheCodeChaos.github.io/ChainReactionMax/pr-previews/${{ github.event.pull_request.number }}/)**
+            **[https://TheCodeChaos.github.io/reaktor/pr-previews/${{ github.event.pull_request.number }}/](https://TheCodeChaos.github.io/reaktor/pr-previews/${{ github.event.pull_request.number }}/)**
           comment_tag: preview-url-comment
 
   cleanup-preview:

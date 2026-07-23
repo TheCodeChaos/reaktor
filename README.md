@@ -1,6 +1,6 @@
-# ChainReactionMax
+# Reaktor
 
-ChainReactionMax website built with Astro.
+Reaktor website built with Astro.
 
 ## Requirements
 

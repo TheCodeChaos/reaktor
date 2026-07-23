@@ -28,8 +28,8 @@ jobs:
       - name: Build with Astro
         run: npm run build
         env:
-          SITE: https://TheCodeChaos.github.io/ChainReactionMax/
-          BASE_PATH: /ChainReactionMax/
+          SITE: https://TheCodeChaos.github.io/reaktor/
+          BASE_PATH: /reaktor/
 
       - name: Add .nojekyll file
         run: touch ./dist/.nojekyll
