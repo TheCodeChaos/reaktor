@@ -1,14 +1,14 @@
 export const siteConfig = {
-  name: 'Chain Reaction MAX',
-  shortName: 'CR MAX',
+  name: 'Reaktor',
+  shortName: 'Reaktor',
   tagline: 'Fast rounds. Big reversals. Pure chain-reaction chaos.',
   description:
-    'Chain Reaction MAX is a multiplayer strategy game for 2 to 6 players with multiple board sizes, and dramatic chain bursts.',
-  siteUrl: 'https://TheCodeChaos.github.io/ChainReactionMax/',
-  repoUrl: 'https://github.com/TheCodeChaos/ChainReactionMax',
-  issuesUrl: 'https://github.com/TheCodeChaos/ChainReactionMax/issues',
-  releasesUrl: 'https://github.com/TheCodeChaos/ChainReactionMax/releases',
-  appUrl: 'https://TheCodeChaos.github.io/ChainReactionMax/app/',
+    'Reaktor is a multiplayer strategy game for 2 to 6 players with multiple board sizes, and dramatic chain bursts.',
+  siteUrl: 'https://TheCodeChaos.github.io/reaktor/',
+  repoUrl: 'https://github.com/TheCodeChaos/reaktor',
+  issuesUrl: 'https://github.com/TheCodeChaos/reaktor/issues',
+  releasesUrl: 'https://github.com/TheCodeChaos/reaktor/releases',
+  appUrl: 'https://TheCodeChaos.github.io/reaktor/app/',
   searchHint: 'Ctrl+K',
 } as const;
 
@@ -20,7 +20,7 @@ export const navLinks = [
   { href: '/support', label: 'Support' },
 ] as const;
 
-export const playLink = { href: 'https://TheCodeChaos.github.io/ChainReactionMax/app/', label: 'Play' } as const;
+export const playLink = { href: 'https://TheCodeChaos.github.io/reaktor/app/', label: 'Play' } as const;
 
 export const quickFacts = [
   { label: 'Players', value: '2-6' },
@@ -94,7 +94,7 @@ export const faqItems = [
   },
   {
     question: 'How many players can join a match?',
-    body: ['Chain Reaction MAX supports 2 to 6 players.'],
+    body: ['Reaktor supports 2 to 6 players.'],
   },
   {
     question: 'What board sizes are available?',
