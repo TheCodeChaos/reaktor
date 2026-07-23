@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thecodechaos.github.io/ChainReactionMax/sitemap-index.xml
+Sitemap: https://thecodechaos.github.io/reaktor/sitemap-index.xml
