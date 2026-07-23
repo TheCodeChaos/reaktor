@@ -174,7 +174,7 @@ const pageSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
     <title>{pageTitle}</title>
     <script is:inline>
-      const storedTheme = localStorage.getItem('crmax-theme');
+      const storedTheme = localStorage.getItem('reaktor-theme');
       const preferredTheme = window.matchMedia('(prefers-color-scheme: light)')
         .matches
         ? 'light'

@@ -10,7 +10,7 @@ tags:
   - Setup
 ---
 
-Chain Reaction MAX works best when the session setup is clear before players start joining. A few simple habits remove most friction.
+Reaktor works best when the session setup is clear before players start joining. A few simple habits remove most friction.
 
 ## Start with one clear host
 

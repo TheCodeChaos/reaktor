@@ -9,7 +9,7 @@ tags:
   - Setup
 ---
 
-Chain Reaction MAX ships with three board presets, and that choice does more than stretch the session. It changes how aggressively the board punishes mistakes.
+Reaktor ships with three board presets, and that choice does more than stretch the session. It changes how aggressively the board punishes mistakes.
 
 ## Sprint: 6 x 5
 

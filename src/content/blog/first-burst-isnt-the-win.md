@@ -1,6 +1,6 @@
 ---
 title: First Burst Isn't the Win
-description: Early explosions feel dominant, but Chain Reaction MAX rewards board shape control more than flashy first contact.
+description: Early explosions feel dominant, but Reaktor rewards board shape control more than flashy first contact.
 pubDate: 2026-04-12
 authors:
   - ayaan
@@ -10,7 +10,7 @@ tags:
 featured: true
 ---
 
-The fastest way to lose a Chain Reaction MAX match is to confuse **activity** with **advantage**.
+The fastest way to lose a Reaktor match is to confuse **activity** with **advantage**.
 
 An early blast looks dramatic, but it is not automatically the strongest move on the board. Because ownership flips during explosions, the real question is not "Can I explode now?" but "What cells will stay dangerous after the chain settles?"
 
@@ -35,7 +35,7 @@ That second point matters. When your position threatens multiple bursts, opponen
 
 ## Use replay as a study tool
 
-Chain Reaction MAX stores the last explosion sequence for replay. Treat that as a strategy feature, not just a visual flourish.
+Reaktor stores the last explosion sequence for replay. Treat that as a strategy feature, not just a visual flourish.
 
 After a big exchange, ask:
 

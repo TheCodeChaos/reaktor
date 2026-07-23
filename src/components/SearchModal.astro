@@ -20,7 +20,7 @@ import PagefindSearch from './PagefindSearch.astro';
       </button>
     </div>
 
-    <PagefindSearch label="Search Chain Reaction MAX" idPrefix="pagefind-modal" />
+    <PagefindSearch label="Search Reaktor" idPrefix="pagefind-modal" />
   </div>
 </div>
 
@@ -108,7 +108,7 @@ import PagefindSearch from './PagefindSearch.astro';
     trigger.addEventListener('click', closeModal);
   });
 
-  window.addEventListener('crmax:open-search', () => {
+  window.addEventListener('reaktor:open-search', () => {
     openModalWithQuery(getSearchQuery());
   });
 
