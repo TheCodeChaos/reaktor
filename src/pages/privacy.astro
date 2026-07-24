@@ -5,32 +5,34 @@ import SiteHeader from '../components/SiteHeader.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Privacy" description="Privacy notes for the Reaktor app and website.">
+<Layout title="Privacy Policy" description="Privacy policy for the Reaktor app and website.">
   <SiteHeader />
 
   <div class="page-shell">
     <main class="container privacy-page" data-pagefind-body>
       <section class="section legal-panel" data-reveal>
-        <h1 class="page-title">Privacy notes, straight to the point.</h1>
+        <h1 class="page-title">Privacy Policy</h1>
         <p class="lede">
-          Reaktor does not currently rely on a remote backend or third-party analytics layer.
-          Core match state runs on-device.
+          Reaktor collects no personal data. Everything you do in the app stays on your device.
+          Effective July 24, 2026.
         </p>
 
         <div class="privacy-strip" aria-label="Privacy summary">
-          <span><strong>No analytics SDK</strong></span>
-          <span><strong>No hosted search API</strong></span>
-          <span><strong>No account required for play</strong></span>
+          <span><strong>No ads</strong></span>
+          <span><strong>No analytics</strong></span>
+          <span><strong>No accounts</strong></span>
+          <span><strong>No data leaves your device</strong></span>
         </div>
 
         <div class="legal-copy section-tight">
           <article class="policy-row">
             <span>01</span>
             <div>
-              <h2>Data collection</h2>
+              <h2>Who we are</h2>
               <p>
-                The current app code does not indicate a remote analytics SDK, ad SDK, or hosted
-                account service. Matches run on-device.
+                Reaktor is a local multiplayer strategy game for Android, developed and published by
+                Shravan Goswami. This policy covers the Reaktor mobile app distributed on Google Play
+                and this website.
               </p>
             </div>
           </article>
@@ -38,10 +40,11 @@ import Layout from '../layouts/Layout.astro';
           <article class="policy-row">
             <span>02</span>
             <div>
-              <h2>Website search</h2>
+              <h2>Data we collect</h2>
               <p>
-                This website uses Pagefind, which builds a static index during build time. Search runs
-                in the browser and does not depend on a hosted search API.
+                None. The app has no advertising SDK, no analytics SDK, no crash-reporting SDK, and
+                no account system. It makes no network calls of its own and does not collect,
+                transmit, sell, or share any personal or sensitive user data.
               </p>
             </div>
           </article>
@@ -49,10 +52,13 @@ import Layout from '../layouts/Layout.astro';
           <article class="policy-row">
             <span>03</span>
             <div>
-              <h2>Repository workflows</h2>
+              <h2>Data stored on your device</h2>
               <p>
-                Opening issues or tracking releases happens on GitHub, and those actions follow
-                GitHub's own privacy policies.
+                Game sessions, board settings, sound and haptic preferences, and the local
+                leaderboard (including any player names you type during setup) are saved only in the
+                app's private storage on your device. They never leave it. You can erase everything
+                at any time from Settings (Clear All Game History, Clear Leaderboard) or by
+                uninstalling the app.
               </p>
             </div>
           </article>
@@ -60,10 +66,91 @@ import Layout from '../layouts/Layout.astro';
           <article class="policy-row">
             <span>04</span>
             <div>
-              <h2>Changes</h2>
+              <h2>Permissions</h2>
               <p>
-                If future versions add cloud sync or telemetry, this page should be updated before
-                those features are announced as active.
+                Reaktor requests no sensitive permissions: no location, camera, microphone,
+                contacts, or storage access. Links in the app (such as developer pages or the Play
+                Store listing) open in your browser or the Play app, where those services' own
+                policies apply.
+              </p>
+            </div>
+          </article>
+
+          <article class="policy-row">
+            <span>05</span>
+            <div>
+              <h2>Children</h2>
+              <p>
+                Reaktor is suitable for all ages. Because the app collects no data at all, it does
+                not knowingly collect personal information from children or anyone else.
+              </p>
+            </div>
+          </article>
+
+          <article class="policy-row">
+            <span>06</span>
+            <div>
+              <h2>Google Play</h2>
+              <p>
+                The app is distributed through Google Play. Google may process platform-level data
+                (such as install statistics or crash telemetry) as described in
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">
+                  Google's privacy policy</a>. That processing happens outside the app.
+              </p>
+            </div>
+          </article>
+
+          <article class="policy-row">
+            <span>07</span>
+            <div>
+              <h2>This website</h2>
+              <p>
+                The site is a static site hosted on GitHub Pages; GitHub may log standard request
+                data as described in
+                <a
+                  href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub's privacy statement</a
+                >. Search runs entirely in your browser via a static Pagefind index. Your theme
+                choice is kept in your browser's local storage.
+              </p>
+            </div>
+          </article>
+
+          <article class="policy-row">
+            <span>08</span>
+            <div>
+              <h2>Comments and feedback</h2>
+              <p>
+                Blog comments and the feedback page use Giscus, which stores comments as GitHub
+                Discussions in a public repository. Commenting is optional and requires signing in
+                with your GitHub account; anything you post is public and governed by GitHub's
+                privacy statement and terms.
+              </p>
+            </div>
+          </article>
+
+          <article class="policy-row">
+            <span>09</span>
+            <div>
+              <h2>Changes to this policy</h2>
+              <p>
+                If a future version of Reaktor ever adds features that touch user data (such as
+                cloud sync), this page will be updated first and the effective date revised.
+              </p>
+            </div>
+          </article>
+
+          <article class="policy-row">
+            <span>10</span>
+            <div>
+              <h2>Contact</h2>
+              <p>
+                Questions about this policy? Email
+                <a href="mailto:contact@shravangoswami.com">contact@shravangoswami.com</a> or open
+                an issue on GitHub.
               </p>
             </div>
           </article>
