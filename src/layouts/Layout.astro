@@ -122,14 +122,14 @@ const pageSchema = {
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="robots" content={robotsValue} />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#06091a" />
+    <meta name="theme-color" content="#f7f5ef" />
     <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={pageTitle} />
@@ -175,10 +175,10 @@ const pageSchema = {
     <title>{pageTitle}</title>
     <script is:inline>
       const storedTheme = localStorage.getItem('reaktor-theme');
-      const preferredTheme = window.matchMedia('(prefers-color-scheme: light)')
+      const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)')
         .matches
-        ? 'light'
-        : 'dark';
+        ? 'dark'
+        : 'light';
       document.documentElement.dataset.theme = storedTheme || preferredTheme;
     </script>
   </head>
