@@ -54,14 +54,23 @@ const posts = (await getCollection('blog'))
           </div>
         </div>
 
-        <div class="hero-orbit" aria-hidden="true">
-          <div class="orbit orbit-a"></div>
-          <div class="orbit orbit-b"></div>
-          <div class="orbit orbit-c"></div>
-          <div class="board-core">
-            <span class="pulse red"></span>
-            <span class="pulse green"></span>
-            <span class="pulse blue"></span>
+        <div class="hero-board" aria-hidden="true">
+          <div class="mini-board">
+            {
+              [
+                '', 'r', '', '', 'y2', '',
+                'r', '', '', '', '', '',
+                '', 'r2', '', '', '', '',
+                '', '', 'b2', '', '', '',
+                '', '', '', '', 'b', '',
+                '', 'g', '', 'g', '', '',
+              ].map(cell => (
+                <span class:list={['mini-cell', cell && `owner-${cell[0]}`]}>
+                  {cell && <i class="atom" />}
+                  {cell.endsWith('2') && <i class="atom atom-2" />}
+                </span>
+              ))
+            }
           </div>
         </div>
       </section>
@@ -221,64 +230,54 @@ const posts = (await getCollection('blog'))
     margin-right: 0.3rem;
   }
 
-  .hero-orbit {
-    position: relative;
-    min-height: 360px;
-    border: 1px solid var(--line-soft);
-    border-radius: 40px;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 70% 34%, rgba(62, 194, 255, 0.24), transparent 44%),
-      radial-gradient(circle at 30% 72%, rgba(255, 124, 57, 0.24), transparent 42%),
-      var(--bg-panel);
-  }
-
-  .orbit {
-    position: absolute;
-    border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
-    border-radius: 999px;
-  }
-
-  .orbit-a {
-    inset: 16% 14%;
-  }
-
-  .orbit-b {
-    inset: 30% 24%;
-  }
-
-  .orbit-c {
-    inset: 44% 36%;
-  }
-
-  .board-core {
-    position: absolute;
-    inset: 0;
+  .hero-board {
     display: grid;
     place-items: center;
   }
 
-  .pulse {
-    position: absolute;
-    width: 2.1rem;
-    height: 2.1rem;
+  .mini-board {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    width: min(100%, 380px);
+    aspect-ratio: 1;
+  }
+
+  .mini-cell {
+    position: relative;
+    border-radius: 14px;
+    background: var(--panel);
+    display: grid;
+    place-items: center;
+  }
+
+  .mini-cell.owner-r { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--player-red) 55%, transparent); }
+  .mini-cell.owner-b { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--player-blue) 55%, transparent); }
+  .mini-cell.owner-g { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--player-green) 55%, transparent); }
+  .mini-cell.owner-y { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--player-yellow) 55%, transparent); }
+
+  .atom {
+    width: 22%;
+    height: 22%;
     border-radius: 50%;
-    box-shadow: 0 0 24px rgba(0, 0, 0, 0.2);
   }
 
-  .pulse.red {
-    background: #ff4c46;
-    transform: translate(-68px, 58px);
+  .owner-r .atom { background: var(--player-red); }
+  .owner-b .atom { background: var(--player-blue); }
+  .owner-g .atom { background: var(--player-green); }
+  .owner-y .atom { background: var(--player-yellow); }
+
+  .atom-2 {
+    position: absolute;
+    transform: translateY(-70%);
   }
 
-  .pulse.green {
-    background: #8df74b;
-    transform: translate(12px, -54px);
+  .mini-cell .atom:first-of-type {
+    transform: translateY(20%);
   }
 
-  .pulse.blue {
-    background: #3ec2ff;
-    transform: translate(72px, 44px);
+  .mini-cell:not(:has(.atom-2)) .atom:first-of-type {
+    transform: none;
   }
 
   .section-headline {
@@ -318,8 +317,8 @@ const posts = (await getCollection('blog'))
 
   .wave-item h3 {
     margin: 0 0 0.35rem;
-    font-family: 'Fraunces', 'Outfit', serif;
-    font-size: 1.25rem;
+    font-weight: 700;
+    font-size: 1.2rem;
   }
 
   .wave-item p {
@@ -334,22 +333,9 @@ const posts = (await getCollection('blog'))
   }
 
   .preset-chip {
-    position: relative;
-    border: 1px solid var(--line-soft);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--panel) 82%, transparent);
-    padding: 1rem;
-    overflow: hidden;
-  }
-
-  .preset-chip::before {
-    content: '';
-    position: absolute;
-    inset: auto -14% -34% auto;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 124, 57, 0.16), transparent 64%);
+    background: var(--panel);
+    padding: 1.25rem;
   }
 
   .preset-chip p {
@@ -362,8 +348,8 @@ const posts = (await getCollection('blog'))
 
   .preset-chip h3 {
     margin: 0 0 0.32rem;
-    font-family: 'Fraunces', 'Outfit', serif;
-    font-size: 1.3rem;
+    font-weight: 700;
+    font-size: 1.25rem;
   }
 
   .preset-chip div p {
@@ -395,9 +381,9 @@ const posts = (await getCollection('blog'))
 
   .journal-main h3 {
     margin: 0 0 0.42rem;
-    font-family: 'Fraunces', 'Outfit', serif;
-    font-size: clamp(1.35rem, 2.3vw, 1.72rem);
-    line-height: 1.1;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    line-height: 1.15;
   }
 
   .journal-main p {
@@ -425,18 +411,17 @@ const posts = (await getCollection('blog'))
   }
 
   .weave-block {
-    border: 1px solid var(--line-soft);
     border-radius: var(--radius-md);
-    padding: 1rem;
-    background: color-mix(in srgb, var(--panel) 84%, transparent);
+    padding: 1.25rem;
+    background: var(--panel);
     display: grid;
     gap: 0.42rem;
   }
 
   .weave-block h3 {
     margin: 0;
-    font-family: 'Fraunces', 'Outfit', serif;
-    font-size: 1.2rem;
+    font-weight: 700;
+    font-size: 1.15rem;
   }
 
   .weave-block p {
@@ -476,13 +461,13 @@ const posts = (await getCollection('blog'))
 
   @media (max-width: 979px) {
     .hero-stage {
-      grid-template-areas: "orbit" "copy";
+      grid-template-areas: "board" "copy";
     }
     .hero-copy {
       grid-area: copy;
     }
-    .hero-orbit {
-      grid-area: orbit;
+    .hero-board {
+      grid-area: board;
     }
   }
 
@@ -495,10 +480,6 @@ const posts = (await getCollection('blog'))
 
     .split-head {
       grid-template-columns: 1fr;
-    }
-
-    .hero-orbit {
-      min-height: 300px;
     }
 
     .journal-row {

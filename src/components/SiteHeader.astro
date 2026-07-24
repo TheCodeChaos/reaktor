@@ -146,11 +146,9 @@ function isActive(href: string) {
     position: absolute;
     inset: 0 0 auto;
     height: var(--nav-height);
-    background: color-mix(in srgb, var(--bg) 90%, transparent);
-    border-bottom: 1px solid var(--line-soft);
-    backdrop-filter: blur(22px) saturate(145%);
-    -webkit-backdrop-filter: blur(22px) saturate(145%);
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--bg) 42%, transparent);
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: blur(18px) saturate(130%);
+    -webkit-backdrop-filter: blur(18px) saturate(130%);
     pointer-events: none;
   }
 
@@ -173,8 +171,7 @@ function isActive(href: string) {
   .brand-logo {
     width: 1.78rem;
     height: 1.78rem;
-    border-radius: 8px;
-    border: 1px solid var(--line-soft);
+    border-radius: 9px;
     flex: 0 0 auto;
   }
 
@@ -185,7 +182,7 @@ function isActive(href: string) {
   }
 
   .brand-copy strong {
-    font-family: 'Fraunces', 'Outfit', serif;
+    font-weight: 700;
     letter-spacing: -0.01em;
     font-size: 1.02rem;
   }
@@ -208,9 +205,8 @@ function isActive(href: string) {
 
   .nav-link:hover,
   .nav-link.active {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--surface-dim);
     color: var(--text);
-    transform: translateY(-1px);
   }
 
   .header-actions {
@@ -225,9 +221,9 @@ function isActive(href: string) {
   .play-link,
   .theme-toggle,
   .menu-toggle {
-    border: 1px solid var(--line-soft);
+    border: none;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.03);
+    background: transparent;
     min-height: 39px;
   }
 
@@ -238,37 +234,31 @@ function isActive(href: string) {
     gap: 0.4rem;
     padding: 0.45rem 0.82rem;
     color: var(--text-muted);
-    font-size: 0.86rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-size: 0.9rem;
     cursor: pointer;
   }
 
   .search-link:hover,
   .repo-link:hover {
     color: var(--text);
-    border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
-    background: rgba(255, 124, 57, 0.12);
+    background: var(--surface-dim);
   }
 
   .play-link {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.45rem 1rem;
-    color: #0d0d0d;
-    font-size: 0.86rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    padding: 0.45rem 1.1rem;
+    color: var(--on-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
     cursor: pointer;
-    background: linear-gradient(135deg, #ff7c39 0%, #ff2200 100%);
-    border-color: transparent;
+    background: var(--primary);
+    border-radius: 12px;
   }
 
   .play-link:hover {
-    filter: brightness(1.1);
-    border-color: transparent;
+    opacity: 0.88;
   }
 
   .theme-toggle,
@@ -279,6 +269,13 @@ function isActive(href: string) {
     width: 39px;
     padding: 0;
     cursor: pointer;
+    color: var(--text-muted);
+  }
+
+  .theme-toggle:hover,
+  .menu-toggle:hover {
+    background: var(--surface-dim);
+    color: var(--text);
   }
 
   .moon-icon,
@@ -322,11 +319,9 @@ function isActive(href: string) {
     margin-left: auto;
     max-width: min(92vw, 338px);
     height: fit-content;
-    border: 1px solid var(--line-soft);
     border-radius: var(--radius-md);
-    background: color-mix(in srgb, var(--bg) 88%, var(--panel));
-    backdrop-filter: blur(18px) saturate(130%);
-    -webkit-backdrop-filter: blur(18px) saturate(130%);
+    background: var(--panel);
+    box-shadow: 0 18px 44px rgba(29, 29, 36, 0.14);
     padding: 0.7rem;
   }
 
@@ -350,20 +345,17 @@ function isActive(href: string) {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    border: 1px solid var(--line-soft);
+    border: none;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-dim);
     color: var(--text-muted);
-    padding: 0.35rem 0.68rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    padding: 0.35rem 0.72rem;
+    font-size: 0.82rem;
     cursor: pointer;
   }
 
   .mobile-search:hover {
     color: var(--text);
-    border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
   }
 
   .mobile-nav {
@@ -388,22 +380,19 @@ function isActive(href: string) {
   .mobile-link.active,
   .mobile-link:hover {
     color: var(--text);
-    background: rgba(255, 255, 255, 0.04);
-    border-color: var(--line-soft);
+    background: var(--surface-dim);
   }
 
   .mobile-play {
     display: block;
     padding: 0.58rem 0.9rem;
     border-radius: 10px;
-    color: #0d0d0d;
-    font-weight: 700;
-    font-size: 0.88rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    color: var(--on-primary);
+    font-weight: 600;
+    font-size: 0.92rem;
     text-align: left;
-    background: linear-gradient(135deg, #ff7c39 0%, #ff2200 100%);
-    border: 1px solid transparent;
+    background: var(--primary);
+    border: none;
     margin-top: 0.35rem;
   }
 
