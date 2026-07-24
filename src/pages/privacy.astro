@@ -97,13 +97,12 @@ import Layout from '../layouts/Layout.astro';
   .privacy-strip span {
     display: inline-flex;
     align-items: center;
-    border: 1px solid var(--line-soft);
     border-radius: 999px;
     padding: 0.26rem 0.7rem;
     color: var(--text-soft);
     font-size: 0.82rem;
     letter-spacing: 0.03em;
-    background: color-mix(in srgb, var(--panel) 82%, transparent);
+    background: var(--surface-dim);
   }
 
   .privacy-strip strong {
@@ -118,9 +117,10 @@ import Layout from '../layouts/Layout.astro';
 
   .legal-copy h2 {
     margin: 0 0 0.5rem;
-    font-family: 'Fraunces', 'Outfit', serif;
+    font-weight: 700;
     font-size: 1.26rem;
-    line-height: 1.08;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
   }
 
   .legal-copy p {

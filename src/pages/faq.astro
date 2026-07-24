@@ -56,13 +56,12 @@ import { faqItems } from '../data/site';
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    border: 1px solid var(--line-soft);
     border-radius: 999px;
     padding: 0.26rem 0.7rem;
     color: var(--text-soft);
     font-size: 0.82rem;
     letter-spacing: 0.03em;
-    background: color-mix(in srgb, var(--panel) 82%, transparent);
+    background: var(--surface-dim);
   }
 
   .faq-strip strong {
@@ -72,5 +71,20 @@ import { faqItems } from '../data/site';
 
   .faq-body {
     padding-top: 0;
+  }
+
+  .faq-body :global(.faq-list) {
+    gap: 0.6rem;
+  }
+
+  .faq-body :global(.faq-item) {
+    border-bottom: none;
+    border-radius: var(--radius-md);
+    background: var(--panel);
+    padding: 0 1.2rem;
+  }
+
+  .faq-body :global(.faq-item[open]) {
+    border-bottom: none;
   }
 </style>
