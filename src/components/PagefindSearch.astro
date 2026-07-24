@@ -169,13 +169,19 @@ const statusId = `${idPrefix}-status`;
     color: var(--text-muted) !important;
   }
 
+  /* Pagefind's own rules double up their scoped class, so plain selectors
+     lose on specificity and the padding silently does nothing. */
   .pagefind-ui__result {
     border-radius: var(--radius-sm);
-    border: none;
+    border: none !important;
     box-shadow: none;
     background: var(--surface-dim);
-    padding: 0.85rem 0.95rem;
+    padding: 1rem 1.15rem !important;
     margin-top: 0.75rem;
+  }
+
+  .pagefind-ui__result-nested {
+    padding-left: 1.1rem !important;
   }
 
   .pagefind-ui__result-link {
