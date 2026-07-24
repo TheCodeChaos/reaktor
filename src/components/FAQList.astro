@@ -14,14 +14,12 @@ const { items } = Astro.props;
 <div class="faq-list" data-reveal>
   {
     items.map(item => (
-      <details class="faq-item">
-        <summary>{item.question}</summary>
-        <div class="faq-answer">
-          {item.body.map(paragraph => (
-            <p>{paragraph}</p>
-          ))}
-        </div>
-      </details>
+      <div class="faq-item">
+        <h3>{item.question}</h3>
+        {item.body.map(paragraph => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
     ))
   }
 </div>
@@ -29,58 +27,23 @@ const { items } = Astro.props;
 <style>
   .faq-list {
     display: grid;
-    gap: 0;
+    gap: 1.9rem;
   }
 
-  .faq-item {
-    border-bottom: 1px solid var(--line-soft);
+  .faq-item h3 {
+    margin: 0 0 0.4rem;
+    font-weight: 650;
+    font-size: 1.06rem;
+    letter-spacing: -0.01em;
   }
 
-  .faq-item[open] {
-    border-bottom-color: var(--line);
-  }
-
-  .faq-item summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 1.02rem 0;
-    font-weight: 600;
-    font-size: 1.03rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .faq-item summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-item summary::after {
-    content: '+';
-    color: var(--text-soft);
-    font-size: 1.05rem;
-    line-height: 1;
-    transition: transform 0.2s ease, color 0.2s ease;
-  }
-
-  .faq-item[open] summary::after {
-    content: '−';
-    color: var(--text);
-    transform: translateY(-1px);
-  }
-
-  .faq-answer {
-    padding: 0 0 1.1rem;
-    color: var(--text-muted);
-    max-width: 74ch;
-  }
-
-  .faq-answer p {
+  .faq-item p {
     margin: 0;
+    color: var(--text-muted);
+    max-width: 68ch;
   }
 
-  .faq-answer p + p {
-    margin-top: 0.8rem;
+  .faq-item p + p {
+    margin-top: 0.7rem;
   }
 </style>
