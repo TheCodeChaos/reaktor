@@ -346,8 +346,9 @@ summary:focus-visible {
 
 .article-prose blockquote {
   margin-left: 0;
-  padding-left: 0.9rem;
-  border-left: 3px solid var(--player-red);
+  padding: 0.7rem 0.95rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-dim);
   color: var(--text);
 }
 

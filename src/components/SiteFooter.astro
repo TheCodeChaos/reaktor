@@ -7,7 +7,12 @@ import { navLinks, siteConfig } from '../data/site';
   <div class="container footer-wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <span class="eyebrow">Reaktor</span>
+        <img
+          class="footer-logo"
+          src={`${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/\//g, '/')}
+          alt=""
+          aria-hidden="true"
+        />
         <h2>Built for tense chain reactions and comeback turns.</h2>
       </div>
 
@@ -54,7 +59,6 @@ import { navLinks, siteConfig } from '../data/site';
 
 <style>
   .footer-wrap {
-    border-top: 1px solid var(--line-soft);
     padding-top: 1.6rem;
   }
 
@@ -64,6 +68,12 @@ import { navLinks, siteConfig } from '../data/site';
     border-radius: var(--radius-lg);
     background: var(--panel);
     padding: 1.4rem;
+  }
+
+  .footer-logo {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: 0.9rem;
   }
 
   .footer-brand h2 {
@@ -136,7 +146,6 @@ import { navLinks, siteConfig } from '../data/site';
     gap: 0.55rem 1.15rem;
     margin-top: 1.1rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--line-soft);
     color: var(--text-soft);
     font-size: 0.9rem;
   }
