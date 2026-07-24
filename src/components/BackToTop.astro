@@ -4,18 +4,29 @@
 
 <script>
   const button = document.getElementById('back-to-top');
+  const idleDelay = 2000;
+  let idleTimer: number | undefined;
 
   const syncBackToTop = () => {
     if (!button) return;
+    window.clearTimeout(idleTimer);
     button.classList.toggle('visible', window.scrollY > 420);
+    // Fade out again once scrolling settles, so it is not parked on screen.
+    idleTimer = window.setTimeout(
+      () => button.classList.remove('visible'),
+      idleDelay
+    );
   };
 
   button?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  // Don't fade out from under a cursor that is on its way to the button.
+  button?.addEventListener('pointerenter', () => window.clearTimeout(idleTimer));
+  button?.addEventListener('pointerleave', syncBackToTop);
+
   window.addEventListener('scroll', syncBackToTop, { passive: true });
-  syncBackToTop();
 </script>
 
 <style>
