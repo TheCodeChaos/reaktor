@@ -1,11 +1,20 @@
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
-import { Resvg } from '@resvg/resvg-js';
-import satori from 'satori';
-import { siteConfig } from '../data/site';
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { Resvg } from "@resvg/resvg-js";
+import satori from "satori";
+import { siteConfig } from "../data/site";
 
 const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
+
+const INK = "#1d1d24";
+const IVORY = "#f7f5ef";
+const MUTED = "#6e6e78";
+const SOFT = "#9a9aa3";
+const HAIRLINE = "#e4e1d6";
+
+const PINWHEEL_COLORS = ["#e23b32", "#2f6fd0", "#2e9e5b", "#e8b62a"];
+const PINWHEEL_ANGLES = [-20, -110, -200, -290];
 
 interface OgImageInput {
   title: string;
@@ -14,16 +23,14 @@ interface OgImageInput {
   path: string;
 }
 
-let cachedFonts:
-  | Promise<
-      {
-        name: string;
-        data: Buffer;
-        weight: 400 | 700;
-        style: 'normal';
-      }[]
-    >
-  | null = null;
+let cachedFonts: Promise<
+  {
+    name: string;
+    data: Buffer;
+    weight: 400 | 700;
+    style: "normal";
+  }[]
+> | null = null;
 
 function truncate(value: string, maxLength: number) {
   if (value.length <= maxLength) {
@@ -38,37 +45,37 @@ async function loadFonts() {
     readFile(
       join(
         process.cwd(),
-        'node_modules',
-        '@fontsource',
-        'inter',
-        'files',
-        'inter-latin-400-normal.woff'
-      )
+        "node_modules",
+        "@fontsource",
+        "inter",
+        "files",
+        "inter-latin-400-normal.woff",
+      ),
     ),
     readFile(
       join(
         process.cwd(),
-        'node_modules',
-        '@fontsource',
-        'inter',
-        'files',
-        'inter-latin-700-normal.woff'
-      )
+        "node_modules",
+        "@fontsource",
+        "inter",
+        "files",
+        "inter-latin-700-normal.woff",
+      ),
     ),
   ]);
 
   return [
     {
-      name: 'Inter',
+      name: "Inter",
       data: regular,
       weight: 400 as const,
-      style: 'normal' as const,
+      style: "normal" as const,
     },
     {
-      name: 'Inter',
+      name: "Inter",
       data: bold,
       weight: 700 as const,
-      style: 'normal' as const,
+      style: "normal" as const,
     },
   ];
 }
@@ -81,77 +88,122 @@ async function getFonts() {
   return cachedFonts;
 }
 
-export async function renderOgImage(input: OgImageInput) {
-  const title = truncate(input.title, 92);
-  const description = truncate(input.description, 172);
-  const pagePath = truncate(input.path || '/', 56);
+// Mirrors public/favicon.svg (128 viewBox): four rounded bars swept around a white dot.
+function pinwheelMark(size: number) {
+  const scale = size / 128;
 
-  const markup = {
-    type: 'div',
+  const petals = PINWHEEL_ANGLES.map((angle, index) => ({
+    type: "div",
     props: {
       style: {
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        backgroundColor: '#08101f',
-        backgroundImage:
-          'radial-gradient(circle at 82% 20%, rgba(62, 194, 255, 0.26), transparent 42%), radial-gradient(circle at 18% 80%, rgba(255, 124, 57, 0.24), transparent 44%)',
-        border: '1px solid rgba(190, 206, 243, 0.2)',
-        borderRadius: '26px',
-        color: '#f3f7ff',
-        padding: '54px',
-        fontFamily: 'Inter',
+        position: "absolute",
+        top: "0px",
+        left: "0px",
+        width: `${size}px`,
+        height: `${size}px`,
+        display: "flex",
+        transform: `rotate(${angle}deg)`,
       },
       children: [
         {
-          type: 'div',
+          type: "div",
           props: {
             style: {
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              position: "absolute",
+              left: `${67 * scale}px`,
+              top: `${54 * scale}px`,
+              width: `${46 * scale}px`,
+              height: `${20 * scale}px`,
+              borderRadius: `${10 * scale}px`,
+              backgroundColor: PINWHEEL_COLORS[index],
+            },
+          },
+        },
+      ],
+    },
+  }));
+
+  const dot = {
+    type: "div",
+    props: {
+      style: {
+        position: "absolute",
+        left: `${55 * scale}px`,
+        top: `${55 * scale}px`,
+        width: `${18 * scale}px`,
+        height: `${18 * scale}px`,
+        borderRadius: "50%",
+        backgroundColor: "#ffffff",
+      },
+    },
+  };
+
+  return {
+    type: "div",
+    props: {
+      style: {
+        position: "relative",
+        display: "flex",
+        width: `${size}px`,
+        height: `${size}px`,
+      },
+      children: [...petals, dot],
+    },
+  };
+}
+
+export async function renderOgImage(input: OgImageInput) {
+  const title = truncate(input.title, 92);
+  const description = truncate(input.description, 172);
+  const pagePath = truncate(input.path || "/", 56);
+
+  const markup = {
+    type: "div",
+    props: {
+      style: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        backgroundColor: IVORY,
+        color: INK,
+        padding: "60px",
+        fontFamily: "Inter",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: {
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
             },
             children: [
               {
-                type: 'div',
+                type: "div",
                 props: {
                   style: {
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    fontSize: '26px',
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "16px",
+                    fontSize: "27px",
                     fontWeight: 700,
-                    letterSpacing: '-0.02em',
+                    letterSpacing: "-0.02em",
                   },
-                  children: [
-                    {
-                      type: 'div',
-                      props: {
-                        style: {
-                          width: '18px',
-                          height: '18px',
-                          borderRadius: '50%',
-                          background: 'linear-gradient(135deg, #ff7c39, #3ec2ff)',
-                        },
-                      },
-                    },
-                    siteConfig.shortName,
-                  ],
+                  children: [pinwheelMark(46), siteConfig.shortName],
                 },
               },
               {
-                type: 'div',
+                type: "div",
                 props: {
                   style: {
-                    fontSize: '18px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.14em',
-                    color: '#8d9dc3',
-                    border: '1px solid rgba(190, 206, 243, 0.2)',
-                    borderRadius: '999px',
-                    padding: '8px 14px',
+                    fontSize: "17px",
+                    fontWeight: 700,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.16em",
+                    color: SOFT,
                   },
                   children: input.label,
                 },
@@ -160,37 +212,38 @@ export async function renderOgImage(input: OgImageInput) {
           },
         },
         {
-          type: 'div',
+          type: "div",
           props: {
             style: {
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '20px',
-              maxWidth: '1000px',
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              maxWidth: "1000px",
             },
             children: [
               {
-                type: 'h1',
+                type: "h1",
                 props: {
                   style: {
                     margin: 0,
-                    fontSize: '66px',
-                    lineHeight: 1.03,
-                    letterSpacing: '-0.03em',
+                    fontSize: "66px",
+                    lineHeight: 1.05,
+                    letterSpacing: "-0.03em",
                     fontWeight: 700,
+                    color: INK,
                   },
                   children: title,
                 },
               },
               {
-                type: 'p',
+                type: "p",
                 props: {
                   style: {
                     margin: 0,
-                    fontSize: '29px',
-                    lineHeight: 1.35,
-                    color: '#b8c4dd',
-                    maxWidth: '980px',
+                    fontSize: "28px",
+                    lineHeight: 1.4,
+                    color: MUTED,
+                    maxWidth: "960px",
                   },
                   children: description,
                 },
@@ -199,18 +252,32 @@ export async function renderOgImage(input: OgImageInput) {
           },
         },
         {
-          type: 'div',
+          type: "div",
           props: {
             style: {
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              fontSize: '22px',
-              color: '#8d9dc3',
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              fontSize: "21px",
+              color: SOFT,
+              borderTop: `1px solid ${HAIRLINE}`,
+              paddingTop: "26px",
             },
             children: [
-              siteConfig.tagline,
-              pagePath,
+              {
+                type: "div",
+                props: {
+                  style: { display: "flex" },
+                  children: siteConfig.tagline,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: { display: "flex" },
+                  children: pagePath,
+                },
+              },
             ],
           },
         },
@@ -226,7 +293,7 @@ export async function renderOgImage(input: OgImageInput) {
 
   const png = new Resvg(svg, {
     fitTo: {
-      mode: 'width',
+      mode: "width",
       value: OG_WIDTH,
     },
   })
@@ -237,8 +304,8 @@ export async function renderOgImage(input: OgImageInput) {
 
   return new Response(body, {
     headers: {
-      'Content-Type': 'image/png',
-      'Cache-Control': 'public, max-age=31536000, immutable',
+      "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=31536000, immutable",
     },
   });
 }
