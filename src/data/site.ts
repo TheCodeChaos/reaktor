@@ -53,16 +53,22 @@ export const boardPresets = [
   {
     name: "Sprint",
     size: "6 x 5",
+    cols: 5,
+    rows: 6,
     summary: "Tight, fast rounds.",
   },
   {
     name: "Classic",
     size: "9 x 6",
+    cols: 6,
+    rows: 9,
     summary: "Balanced pacing, the default preset.",
   },
   {
     name: "Warzone",
     size: "12 x 8",
+    cols: 8,
+    rows: 12,
     summary: "Long matches with late-game collapses.",
   },
 ] as const;

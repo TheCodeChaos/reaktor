@@ -21,6 +21,12 @@ const highlights = featureCards.slice(0, 3);
   <div class="page-shell">
     <main class="container home-page" data-pagefind-body>
       <section class="hero" data-reveal>
+        <img
+          class="hero-logo"
+          src={`${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/\//g, '/')}
+          alt=""
+          aria-hidden="true"
+        />
         <h1 class="display-title">
           Quick rounds,
           <span class="gradient-text">big reversals.</span>
@@ -33,26 +39,6 @@ const highlights = featureCards.slice(0, 3);
           <a class="button" href={`${import.meta.env.BASE_URL}/support`.replace(/\/\//g, '/')}>
             How to play
           </a>
-        </div>
-
-        <div class="hero-board" aria-hidden="true">
-          <div class="mini-board">
-            {
-              [
-                '', 'r', '', '', 'y2', '',
-                'r', '', '', '', '', '',
-                '', 'r2', '', '', '', '',
-                '', '', 'b2', '', '', '',
-                '', '', '', '', 'b', '',
-                '', 'g', '', 'g', '', '',
-              ].map(cell => (
-                <span class:list={['mini-cell', cell && `owner-${cell[0]}`]}>
-                  {cell && <i class="atom" />}
-                  {cell.endsWith('2') && <i class="atom atom-2" />}
-                </span>
-              ))
-            }
-          </div>
         </div>
       </section>
 
@@ -75,8 +61,14 @@ const highlights = featureCards.slice(0, 3);
           {
             boardPresets.map(preset => (
               <article class="preset">
-                <p class="preset-size">{preset.size}</p>
+                <div class="preset-preview" aria-hidden="true">
+                  <div class="preset-grid" style={`--cols:${preset.cols};`}>
+                    {Array.from({ length: preset.cols * preset.rows }).map(() => <span />)}
+                  </div>
+                </div>
                 <h3>{preset.name}</h3>
+                <p class="preset-size">{preset.size}</p>
+                <p class="preset-summary">{preset.summary}</p>
               </article>
             ))
           }
@@ -139,54 +131,23 @@ const highlights = featureCards.slice(0, 3);
     justify-content: center;
   }
 
-  .hero-board {
-    width: min(100%, 320px);
-    margin-top: 1.2rem;
+  .hero-logo {
+    width: clamp(5rem, 11vw, 7.5rem);
+    height: auto;
+    margin-bottom: 0.5rem;
+    animation: hero-spin 8s linear infinite;
   }
 
-  .mini-board {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 8px;
-    width: 100%;
-    aspect-ratio: 1;
+  @keyframes hero-spin {
+    to {
+      transform: rotate(360deg);
+    }
   }
 
-  .mini-cell {
-    position: relative;
-    border-radius: 14px;
-    background: var(--panel);
-    display: grid;
-    place-items: center;
-  }
-
-  .mini-cell.owner-r { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--player-red) 55%, transparent); }
-  .mini-cell.owner-b { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--player-blue) 55%, transparent); }
-  .mini-cell.owner-g { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--player-green) 55%, transparent); }
-  .mini-cell.owner-y { box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--player-yellow) 55%, transparent); }
-
-  .atom {
-    width: 22%;
-    height: 22%;
-    border-radius: 50%;
-  }
-
-  .owner-r .atom { background: var(--player-red); }
-  .owner-b .atom { background: var(--player-blue); }
-  .owner-g .atom { background: var(--player-green); }
-  .owner-y .atom { background: var(--player-yellow); }
-
-  .atom-2 {
-    position: absolute;
-    transform: translateY(-70%);
-  }
-
-  .mini-cell .atom:first-of-type {
-    transform: translateY(20%);
-  }
-
-  .mini-cell:not(:has(.atom-2)) .atom:first-of-type {
-    transform: none;
+  @media (prefers-reduced-motion: reduce) {
+    .hero-logo {
+      animation: none;
+    }
   }
 
   .highlight-grid {
@@ -215,24 +176,59 @@ const highlights = featureCards.slice(0, 3);
   }
 
   .preset-lane {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3.2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
   }
 
-  .preset-size {
-    margin: 0 0 0.2rem;
-    font-size: 1.9rem;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    color: var(--text);
+  .preset {
+    display: grid;
+    justify-items: start;
+    gap: 0.3rem;
+    border-radius: var(--radius-md);
+    padding: 1.4rem;
+    background: var(--panel);
+  }
+
+  /* Each preset previews its own grid shape, to true proportions. A fixed
+     band keeps the taller boards from pushing their titles out of line. */
+  .preset-preview {
+    display: flex;
+    align-items: flex-end;
+    height: 88px;
+    margin-bottom: 1.1rem;
+  }
+
+  .preset-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 5px);
+    gap: 2px;
+  }
+
+  .preset-grid span {
+    aspect-ratio: 1;
+    border-radius: 1px;
+    background: color-mix(in srgb, var(--text) 17%, transparent);
   }
 
   .preset h3 {
     margin: 0;
-    font-weight: 500;
-    font-size: 0.94rem;
+    font-weight: 650;
+    font-size: 1.12rem;
+    letter-spacing: -0.01em;
+  }
+
+  .preset-size {
+    margin: 0.1rem 0 0;
+    color: var(--text-soft);
+    font-size: 0.86rem;
+    letter-spacing: 0.06em;
+  }
+
+  .preset-summary {
+    margin: 0.5rem 0 0;
     color: var(--text-muted);
+    font-size: 0.95rem;
   }
 
   .section-headline.split-head {
@@ -292,7 +288,7 @@ const highlights = featureCards.slice(0, 3);
     }
 
     .preset-lane {
-      gap: 2.2rem;
+      grid-template-columns: 1fr;
     }
 
     .journal-row {
