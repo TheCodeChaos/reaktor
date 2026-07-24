@@ -149,15 +149,6 @@ export interface Developer {
 
 export const developers: readonly Developer[] = [
   {
-    id: "ayaan",
-    name: "Ayaan Shaikh",
-    initials: "AS",
-    avatar: "https://github.com/Ayaan-7091.png",
-    links: {
-      github: "https://github.com/Ayaan-7091",
-    },
-  },
-  {
     id: "shravan",
     name: "Shravan Goswami",
     initials: "SG",
@@ -165,6 +156,15 @@ export const developers: readonly Developer[] = [
     links: {
       github: "https://github.com/shravanngoswamii",
       website: "https://shravangoswami.com/",
+    },
+  },
+  {
+    id: "ayaan",
+    name: "Ayaan Shaikh",
+    initials: "AS",
+    avatar: "https://github.com/Ayaan-7091.png",
+    links: {
+      github: "https://github.com/Ayaan-7091",
     },
   },
   {
@@ -180,8 +180,8 @@ export const developers: readonly Developer[] = [
 ];
 
 export const authors = {
-  ayaan: developers[0],
-  shravan: developers[1],
+  shravan: developers[0],
+  ayaan: developers[1],
   jitendra: developers[2],
 } as const;
 
