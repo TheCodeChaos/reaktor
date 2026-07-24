@@ -42,17 +42,16 @@ const primaryLink = author.links.github ?? website;
     align-items: center;
     gap: 0.5rem;
     border-radius: 999px;
-    border: 1px solid var(--line-soft);
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--surface-dim);
     padding: 0.22rem 0.62rem 0.22rem 0.22rem;
     color: var(--text);
     font-size: 0.8rem;
     letter-spacing: 0.02em;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
 
   a.author-badge:hover {
-    border-color: color-mix(in srgb, var(--accent) 54%, var(--line));
+    background: var(--line);
     transform: translateY(-1px);
   }
 
@@ -62,8 +61,8 @@ const primaryLink = author.links.github ?? website;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent-2) 56%, var(--accent)));
-    color: white;
+    background: var(--primary);
+    color: var(--on-primary);
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.05em;

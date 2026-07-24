@@ -87,17 +87,15 @@ const statusId = `${idPrefix}-status`;
 
 <style is:global>
   .search-shell {
-    border: 1px solid var(--line-soft);
     border-radius: var(--radius-lg);
-    background: var(--bg-panel);
+    background: var(--panel);
     padding: 1.15rem;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
   }
 
   .search-header h2 {
     margin: 0.28rem 0 0.52rem;
-    font-family: 'Fraunces', 'Outfit', serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     font-size: clamp(1.7rem, 4vw, 2.35rem);
     line-height: 1.07;
   }
@@ -118,10 +116,10 @@ const statusId = `${idPrefix}-status`;
 
   .pagefind-ui__search-input {
     width: 100%;
-    border-radius: 12px;
-    border: 1px solid var(--line-soft) !important;
+    border-radius: var(--radius-sm);
+    border: none !important;
     box-shadow: none;
-    background: color-mix(in srgb, var(--panel) 92%, transparent) !important;
+    background: var(--surface-dim) !important;
     color: var(--text) !important;
     min-height: 54px;
     padding-left: 2.65rem !important;
@@ -134,8 +132,8 @@ const statusId = `${idPrefix}-status`;
 
   .pagefind-ui__search-clear {
     border-radius: 999px !important;
-    border: 1px solid var(--line-soft) !important;
-    background: color-mix(in srgb, var(--panel) 88%, transparent) !important;
+    border: none !important;
+    background: transparent !important;
     color: var(--text-soft) !important;
     width: 1.9rem !important;
     height: 1.9rem !important;
@@ -147,7 +145,6 @@ const statusId = `${idPrefix}-status`;
 
   .pagefind-ui__search-clear:hover {
     color: var(--text) !important;
-    border-color: var(--line) !important;
   }
 
   .pagefind-ui__search-icon {
@@ -164,10 +161,10 @@ const statusId = `${idPrefix}-status`;
   }
 
   .pagefind-ui__result {
-    border-radius: 12px;
-    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    border: none;
     box-shadow: none;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--surface-dim);
     padding: 0.85rem 0.95rem;
     margin-top: 0.75rem;
   }
@@ -186,11 +183,12 @@ const statusId = `${idPrefix}-status`;
   }
 
   .pagefind-ui__button {
-    border-radius: 999px !important;
-    border: 1px solid var(--line-soft) !important;
+    border-radius: 12px !important;
+    border: none !important;
     box-shadow: none;
-    background: transparent !important;
-    color: var(--text) !important;
+    background: var(--primary) !important;
+    color: var(--on-primary) !important;
+    font-weight: 600;
   }
 
   @media (max-width: 720px) {

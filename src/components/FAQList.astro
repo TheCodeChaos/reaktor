@@ -37,7 +37,7 @@ const { items } = Astro.props;
   }
 
   .faq-item[open] {
-    border-bottom-color: color-mix(in srgb, var(--accent) 58%, var(--line));
+    border-bottom-color: var(--line);
   }
 
   .faq-item summary {
@@ -58,14 +58,15 @@ const { items } = Astro.props;
 
   .faq-item summary::after {
     content: '+';
-    color: var(--accent);
+    color: var(--text-soft);
     font-size: 1.05rem;
     line-height: 1;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.2s ease;
   }
 
   .faq-item[open] summary::after {
     content: '−';
+    color: var(--text);
     transform: translateY(-1px);
   }
 
