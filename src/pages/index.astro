@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import { ArrowRight } from '@lucide/astro';
 import BackToTop from '../components/BackToTop.astro';
-import AuthorBadge from '../components/AuthorBadge.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
@@ -12,6 +11,8 @@ import { boardPresets, featureCards, playLink, siteConfig } from '../data/site';
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
+
+const highlights = featureCards.slice(0, 3);
 ---
 
 <Layout title={siteConfig.name} description={siteConfig.description}>
@@ -19,24 +20,19 @@ const posts = (await getCollection('blog'))
 
   <div class="page-shell">
     <main class="container home-page" data-pagefind-body>
-      <section class="section hero-stage" data-reveal>
-        <div class="hero-copy">
-          <h1 class="display-title">
-            Quick rounds,
-            <span class="gradient-text">big reversals.</span>
-          </h1>
-          <p class="lede">A fast board game for friends. Tense until the last burst.</p>
-          <div class="button-row">
-            <a class="button button-play" href={playLink.href} target="_blank" rel="noreferrer">
-              Play game
-            </a>
-            <a class="button" href={`${import.meta.env.BASE_URL}/support`.replace(/\/\//g, '/')}>
-              How to play
-            </a>
-            <a class="button-secondary" href={`${import.meta.env.BASE_URL}/blog`.replace(/\/\//g, '/')}>
-              Strategy blog
-            </a>
-          </div>
+      <section class="hero" data-reveal>
+        <h1 class="display-title">
+          Quick rounds,
+          <span class="gradient-text">big reversals.</span>
+        </h1>
+        <p class="lede">A fast board game for friends. Tense until the last burst.</p>
+        <div class="button-row">
+          <a class="button button-play" href={playLink.href} target="_blank" rel="noreferrer">
+            Play game
+          </a>
+          <a class="button" href={`${import.meta.env.BASE_URL}/support`.replace(/\/\//g, '/')}>
+            How to play
+          </a>
         </div>
 
         <div class="hero-board" aria-hidden="true">
@@ -60,19 +56,13 @@ const posts = (await getCollection('blog'))
         </div>
       </section>
 
-      <section class="section feature-stage" data-reveal>
-        <div class="section-headline">
-          <h2 class="section-title">Built to make momentum visible.</h2>
-        </div>
-        <div class="feature-wave section-tight">
+      <section class="section highlight-stage" data-reveal>
+        <div class="highlight-grid">
           {
-            featureCards.map((feature, index) => (
-              <article class="wave-item" style={`--delay:${index * 90}ms`} data-reveal>
-                <p class="wave-index">0{index + 1}</p>
-                <div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </div>
+            highlights.map(feature => (
+              <article class="highlight">
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
               </article>
             ))
           }
@@ -80,18 +70,13 @@ const posts = (await getCollection('blog'))
       </section>
 
       <section class="section preset-stage" data-reveal>
-        <div class="section-headline">
-          <h2 class="section-title">Pick your pressure curve.</h2>
-        </div>
-        <div class="preset-lane section-tight">
+        <h2 class="section-title">Three board sizes.</h2>
+        <div class="preset-lane">
           {
             boardPresets.map(preset => (
-              <article class="preset-chip">
-                <p>{preset.size}</p>
-                <div>
-                  <h3>{preset.name}</h3>
-                  <p>{preset.summary}</p>
-                </div>
+              <article class="preset">
+                <p class="preset-size">{preset.size}</p>
+                <h3>{preset.name}</h3>
               </article>
             ))
           }
@@ -100,41 +85,31 @@ const posts = (await getCollection('blog'))
 
       <section class="section journal-stage" data-reveal>
         <div class="section-headline split-head">
-          <div>
-            <h2 class="section-title">From the blog</h2>
-          </div>
+          <h2 class="section-title">From the blog</h2>
           <a class="button-ghost" href={`${import.meta.env.BASE_URL}/blog`.replace(/\/\//g, '/')}>
             Browse all <ArrowRight size={16} />
           </a>
         </div>
 
-        <div class="journal-list section-tight">
+        <div class="journal-list">
           {
             posts.map(post => (
-              <article class="journal-row">
-                <div class="journal-meta">
+              <a
+                class="journal-row"
+                href={`${import.meta.env.BASE_URL}/blog/${post.id}/`.replace(/\/\//g, '/')}
+              >
+                <span class="journal-meta">
                   <FormattedDate date={post.data.pubDate} />
-                </div>
-                <div class="journal-main">
-                  <h3>
-                    <a href={`${import.meta.env.BASE_URL}/blog/${post.id}/`.replace(/\/\//g, '/')}>
-                      {post.data.title}
-                    </a>
-                  </h3>
-                  <p>{post.data.description}</p>
-                  <div class="tag-row">
-                    {post.data.authors.map(author => <AuthorBadge authorId={author as 'ayaan' | 'shravan'} />)}
-                  </div>
-                </div>
-                <a class="journal-link" href={`${import.meta.env.BASE_URL}/blog/${post.id}/`.replace(/\/\//g, '/')}>
-                  Read <ArrowRight size={16} />
-                </a>
-              </article>
+                </span>
+                <span class="journal-main">
+                  <span class="journal-title">{post.data.title}</span>
+                  <span class="journal-desc">{post.data.description}</span>
+                </span>
+              </a>
             ))
           }
         </div>
       </section>
-
     </main>
   </div>
 
@@ -148,28 +123,32 @@ const posts = (await getCollection('blog'))
     gap: 0;
   }
 
-  .hero-stage {
+  .hero {
     display: grid;
-    order: -1;
-    gap: 1.5rem;
-    align-items: center;
+    justify-items: center;
+    text-align: center;
+    gap: 1.35rem;
+    padding: 3.5rem 0 4.5rem;
   }
 
-  .hero-copy {
-    display: grid;
-    gap: 0.95rem;
+  .hero .lede {
+    max-width: 46ch;
+  }
+
+  .hero .button-row {
+    justify-content: center;
   }
 
   .hero-board {
-    display: grid;
-    place-items: center;
+    width: min(100%, 320px);
+    margin-top: 1.2rem;
   }
 
   .mini-board {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 8px;
-    width: min(100%, 380px);
+    width: 100%;
     aspect-ratio: 1;
   }
 
@@ -210,176 +189,118 @@ const posts = (await getCollection('blog'))
     transform: none;
   }
 
-  .section-headline {
+  .highlight-grid {
     display: grid;
-    gap: 0.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem;
   }
 
-  .split-head {
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 0.8rem;
+  .highlight h3 {
+    margin: 0 0 0.42rem;
+    font-weight: 650;
+    font-size: 1.12rem;
+    letter-spacing: -0.01em;
   }
 
-  .feature-wave {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.7rem 1.1rem;
-  }
-
-  .wave-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.75rem;
-    border-top: 1px solid var(--line-soft);
-    padding-top: 0.95rem;
-    transition-delay: var(--delay);
-  }
-
-  .wave-index {
-    margin: 0;
-    font-size: 0.76rem;
-    color: var(--text-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding-top: 0.4rem;
-  }
-
-  .wave-item h3 {
-    margin: 0 0 0.35rem;
-    font-weight: 700;
-    font-size: 1.2rem;
-  }
-
-  .wave-item p {
+  .highlight p {
     margin: 0;
     color: var(--text-muted);
+    font-size: 0.97rem;
+  }
+
+  .preset-stage,
+  .journal-stage {
+    display: grid;
+    gap: 1.5rem;
   }
 
   .preset-lane {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3.2rem;
   }
 
-  .preset-chip {
-    border-radius: var(--radius-md);
-    background: var(--panel);
-    padding: 1.25rem;
+  .preset-size {
+    margin: 0 0 0.2rem;
+    font-size: 1.9rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--text);
   }
 
-  .preset-chip p {
-    margin: 0 0 0.45rem;
-    color: var(--text-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.75rem;
-  }
-
-  .preset-chip h3 {
-    margin: 0 0 0.32rem;
-    font-weight: 700;
-    font-size: 1.25rem;
-  }
-
-  .preset-chip div p {
+  .preset h3 {
     margin: 0;
-    text-transform: none;
-    letter-spacing: normal;
+    font-weight: 500;
+    font-size: 0.94rem;
     color: var(--text-muted);
-    font-size: 0.95rem;
+  }
+
+  .section-headline.split-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.8rem;
   }
 
   .journal-list {
     display: grid;
-    gap: 0;
-    border-top: 1px solid var(--line-soft);
+    gap: 0.5rem;
   }
 
   .journal-row {
     display: grid;
-    grid-template-columns: minmax(120px, 165px) 1fr auto;
-    gap: 0.9rem;
+    grid-template-columns: minmax(110px, 150px) 1fr;
+    gap: 1.1rem;
     align-items: start;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--line-soft);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.1rem;
+    transition: background 0.2s ease;
+  }
+
+  .journal-row:hover {
+    background: var(--panel);
   }
 
   .journal-meta {
-    padding-top: 0.35rem;
+    padding-top: 0.16rem;
+    color: var(--text-soft);
+    font-size: 0.9rem;
   }
 
-  .journal-main h3 {
-    margin: 0 0 0.42rem;
-    font-weight: 700;
-    font-size: clamp(1.3rem, 2.2vw, 1.6rem);
-    line-height: 1.15;
+  .journal-main {
+    display: grid;
+    gap: 0.3rem;
+    min-width: 0;
   }
 
-  .journal-main p {
-    margin: 0;
+  .journal-title {
+    font-weight: 650;
+    font-size: 1.14rem;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  .journal-desc {
     color: var(--text-muted);
+    font-size: 0.97rem;
   }
 
-  .journal-main .tag-row {
-    margin-top: 0.75rem;
-  }
-
-  .journal-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.32rem;
-    color: var(--text);
-    font-weight: 550;
-    padding-top: 0.36rem;
-  }
-
-  @media (min-width: 980px) {
-    .hero-stage {
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  @media (max-width: 900px) {
+    .highlight-grid {
+      grid-template-columns: 1fr;
+      gap: 1.9rem;
     }
-  }
 
-  @media (max-width: 979px) {
-    .hero-stage {
-      grid-template-areas: "board" "copy";
-    }
-    .hero-copy {
-      grid-area: copy;
-    }
-    .hero-board {
-      grid-area: board;
-    }
-  }
-
-  @media (max-width: 980px) {
-    .feature-wave,
     .preset-lane {
-      grid-template-columns: 1fr;
-    }
-
-    .split-head {
-      grid-template-columns: 1fr;
+      gap: 2.2rem;
     }
 
     .journal-row {
       grid-template-columns: 1fr;
-      gap: 0.48rem;
+      gap: 0.4rem;
     }
 
-    .journal-meta,
-    .journal-link {
-      padding-top: 0;
-    }
-  }
-
-  @media (max-width: 740px) {
-    .wave-item {
-      grid-template-columns: 1fr;
-      gap: 0.45rem;
-    }
-
-    .wave-index {
+    .journal-meta {
       padding-top: 0;
     }
   }
