@@ -136,6 +136,8 @@ export interface Developer {
   readonly links: {
     readonly github: string;
     readonly website?: string;
+    readonly linkedin?: string;
+    readonly sponsor?: string;
   };
 }
 
@@ -148,6 +150,8 @@ export const developers: readonly Developer[] = [
     links: {
       github: "https://github.com/shravanngoswamii",
       website: "https://shravangoswami.com/",
+      linkedin: "https://www.linkedin.com/in/shravangoswami/",
+      sponsor: "https://github.com/sponsors/shravanngoswamii?o=esb",
     },
   },
   {
@@ -157,6 +161,7 @@ export const developers: readonly Developer[] = [
     avatar: "https://github.com/Ayaan-7091.png",
     links: {
       github: "https://github.com/Ayaan-7091",
+      linkedin: "https://www.linkedin.com/in/ayaan-shaikh-699a482a8/",
     },
   },
   {

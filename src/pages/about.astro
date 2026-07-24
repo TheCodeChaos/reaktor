@@ -1,77 +1,85 @@
 ---
+import { Github, Globe, Heart, Linkedin } from '@lucide/astro';
 import BackToTop from '../components/BackToTop.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import Layout from '../layouts/Layout.astro';
-import { boardPresets, featureCards, siteConfig } from '../data/site';
+import { developers, featureCards } from '../data/site';
 ---
 
-<Layout title="About" description="The story and product direction behind Reaktor.">
+<Layout title="About" description="What Reaktor is and who builds it.">
   <SiteHeader />
 
   <div class="page-shell">
     <main class="container about-page" data-pagefind-body>
       <section class="section about-hero" data-reveal>
         <h1 class="page-title">
-          Designed to make every
-          <span class="gradient-text">chain reaction readable.</span>
+          Chain reactions,
+          <span class="gradient-text">made readable.</span>
         </h1>
-        <p class="lede">
-          Reaktor keeps the classic chain-reaction formula, with a cleaner Flutter interface,
-          flexible board presets, and replay-friendly feedback.
-        </p>
-      </section>
-
-      <section class="section manifesto" data-reveal>
-        <article class="manifesto-item">
-          <h2 class="section-title">Why it exists</h2>
-          <p>
-            The goal is simple: keep the gameplay chaotic, but make each decision easy to read.
-            Setup is quick so matches start fast without menu friction.
-          </p>
-        </article>
-        <article class="manifesto-item">
-          <h2 class="section-title">What already ships</h2>
-          <p>
-            The current build includes turn logic, elimination handling, explosion replay, and session
-            setup flow.
-            This site documents what is already working in the app.
-          </p>
-        </article>
-        <article class="manifesto-item">
-          <h2 class="section-title">How it should feel</h2>
-          <p>
-            Match readability matters more than visual noise. The UI is intentionally compact so players can
-            focus on timing, pressure, and board control.
-          </p>
-        </article>
+        <p class="lede">A strategy game for 2 to 6 players around one screen.</p>
       </section>
 
       <section class="section pillars" data-reveal>
         <div class="pillars-grid section-tight">
           {
-            featureCards.map((feature, index) => (
-              <article class="pillar" style={`--pillar-index:${index};`}>
-                <p class="pillar-index">0{index + 1}</p>
-                <div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </div>
+            featureCards.map(feature => (
+              <article class="pillar">
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
               </article>
             ))
           }
         </div>
       </section>
 
-      <section class="section presets" data-reveal>
-        <div class="preset-ring section-tight">
+      <section class="section team" data-reveal>
+        <h2 class="section-title">Team</h2>
+        <div class="team-grid section-tight">
           {
-            boardPresets.map(preset => (
-              <article class="preset-card">
-                <p class="preset-size">{preset.size}</p>
-                <div>
-                  <h3>{preset.name}</h3>
-                  <p>{preset.summary}</p>
+            developers.map(dev => (
+              <article class="team-card">
+                <img src={dev.avatar} alt={dev.name} class="team-avatar" loading="lazy" />
+                <h3>{dev.name}</h3>
+                <div class="team-links">
+                  <a
+                    href={dev.links.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${dev.name} on GitHub`}
+                  >
+                    <Github size={18} />
+                  </a>
+                  {dev.links.linkedin && (
+                    <a
+                      href={dev.links.linkedin}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${dev.name} on LinkedIn`}
+                    >
+                      <Linkedin size={18} />
+                    </a>
+                  )}
+                  {dev.links.website && (
+                    <a
+                      href={dev.links.website}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${dev.name}'s website`}
+                    >
+                      <Globe size={18} />
+                    </a>
+                  )}
+                  {dev.links.sponsor && (
+                    <a
+                      href={dev.links.sponsor}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Sponsor ${dev.name}`}
+                    >
+                      <Heart size={18} />
+                    </a>
+                  )}
                 </div>
               </article>
             ))
@@ -91,99 +99,104 @@ import { boardPresets, featureCards, siteConfig } from '../data/site';
     gap: 0;
   }
 
-  .manifesto {
+  .about-hero {
     display: grid;
-    gap: 0.9rem;
+    gap: 0.95rem;
   }
 
-  .manifesto-item {
-    border-radius: var(--radius-md);
-    padding: 1.25rem;
-    background: var(--panel);
-  }
-
-  .manifesto-item p {
-    margin: 0;
-    color: var(--text-muted);
+  .pillars {
+    padding-top: 0;
   }
 
   .pillars-grid {
-    display: grid;
-    gap: 0.85rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .pillar {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.8rem;
-    border-top: 1px solid var(--line-soft);
-    padding-top: 0.9rem;
-  }
-
-  .pillar-index {
-    margin: 0;
-    color: var(--text-soft);
-    font-size: 0.76rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding-top: 0.35rem;
-  }
-
-  .pillar h3,
-  .preset-card h3 {
-    margin: 0 0 0.35rem;
-    font-weight: 700;
-    font-size: 1.25rem;
-  }
-
-  .pillar p,
-  .preset-card p {
-    margin: 0;
-    color: var(--text-muted);
-  }
-
-  .preset-ring {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.85rem;
   }
 
-  .preset-card {
+  .pillar {
     border-radius: var(--radius-md);
     padding: 1.25rem;
     background: var(--panel);
   }
 
-  .preset-size {
+  .pillar h3 {
     margin: 0 0 0.35rem;
-    color: var(--text-soft);
-    font-size: 0.76rem;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.08rem;
   }
 
-  @media (min-width: 980px) {
-    .manifesto {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  .pillar p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .team {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .team-card {
+    display: grid;
+    justify-items: center;
+    gap: 0.7rem;
+    border-radius: var(--radius-md);
+    padding: 1.6rem 1.25rem;
+    background: var(--panel);
+    text-align: center;
+  }
+
+  .team-avatar {
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .team-card h3 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  .team-links {
+    display: flex;
+    gap: 0.45rem;
+  }
+
+  .team-links a {
+    display: inline-grid;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: var(--surface-dim);
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .team-links a:hover {
+    color: var(--text);
   }
 
   @media (max-width: 980px) {
     .pillars-grid,
-    .preset-ring {
-      grid-template-columns: 1fr;
+    .team-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  @media (max-width: 720px) {
-    .pillar {
+  @media (max-width: 640px) {
+    .pillars-grid,
+    .team-grid {
       grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
-
-    .pillar-index {
-      padding-top: 0;
     }
   }
 </style>
