@@ -14,11 +14,8 @@ export const siteConfig = {
 
 export const navLinks = [
   { href: "/blog", label: "Blog" },
-  { href: "/faq", label: "FAQ" },
   { href: "/about", label: "About" },
-  { href: "/developers", label: "Developers" },
   { href: "/support", label: "Support" },
-  { href: "/feedback", label: "Feedback" },
 ] as const;
 
 export const playLink = {
@@ -70,12 +67,6 @@ export const boardPresets = [
     size: "12 x 8",
     summary: "Long matches with late-game collapses.",
   },
-] as const;
-
-export const supportChecklist = [
-  "Note the board size and player count that reproduced the issue.",
-  "Share whether the problem happened during an explosion replay, a live turn, or match start.",
-  "Include screenshots or a short screen recording when the bug is visual.",
 ] as const;
 
 export const faqItems = [
