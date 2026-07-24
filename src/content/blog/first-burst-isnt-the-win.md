@@ -3,7 +3,7 @@ title: First Burst Isn't the Win
 description: Early explosions feel dominant, but Reaktor rewards board shape control more than flashy first contact.
 pubDate: 2026-04-12
 authors:
-  - ayaan
+  - shravan
 tags:
   - Strategy
   - Gameplay

@@ -297,6 +297,13 @@ summary:focus-visible {
   font-size: 1.06rem;
 }
 
+.article-prose p {
+  text-align: justify;
+  text-wrap: pretty;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
 .article-prose > :first-child {
   margin-top: 0;
 }
