@@ -10,8 +10,6 @@ const OG_HEIGHT = 630;
 const INK = "#1d1d24";
 const IVORY = "#f7f5ef";
 const MUTED = "#6e6e78";
-const SOFT = "#9a9aa3";
-const HAIRLINE = "#e4e1d6";
 
 const PINWHEEL_COLORS = ["#e23b32", "#2f6fd0", "#2e9e5b", "#e8b62a"];
 const PINWHEEL_ANGLES = [-20, -110, -200, -290];
@@ -19,8 +17,6 @@ const PINWHEEL_ANGLES = [-20, -110, -200, -290];
 interface OgImageInput {
   title: string;
   description: string;
-  label: string;
-  path: string;
 }
 
 let cachedFonts: Promise<
@@ -153,9 +149,12 @@ function pinwheelMark(size: number) {
 }
 
 export async function renderOgImage(input: OgImageInput) {
-  const title = truncate(input.title, 92);
-  const description = truncate(input.description, 172);
-  const pagePath = truncate(input.path || "/", 56);
+  const isHome = input.title === siteConfig.name;
+  const title = truncate(input.title, 60);
+  const description = truncate(
+    isHome ? siteConfig.tagline : input.description,
+    96,
+  );
 
   const markup = {
     type: "div",
@@ -165,120 +164,42 @@ export async function renderOgImage(input: OgImageInput) {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        gap: "34px",
         backgroundColor: IVORY,
         color: INK,
-        padding: "60px",
+        padding: "90px",
         fontFamily: "Inter",
       },
       children: [
+        pinwheelMark(132),
         {
-          type: "div",
+          type: "h1",
           props: {
             style: {
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              margin: 0,
+              fontSize: "76px",
+              lineHeight: 1.04,
+              letterSpacing: "-0.03em",
+              fontWeight: 700,
+              color: INK,
             },
-            children: [
-              {
-                type: "div",
-                props: {
-                  style: {
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "16px",
-                    fontSize: "27px",
-                    fontWeight: 700,
-                    letterSpacing: "-0.02em",
-                  },
-                  children: [pinwheelMark(46), siteConfig.shortName],
-                },
-              },
-              {
-                type: "div",
-                props: {
-                  style: {
-                    fontSize: "17px",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.16em",
-                    color: SOFT,
-                  },
-                  children: input.label,
-                },
-              },
-            ],
+            children: title,
           },
         },
         {
-          type: "div",
+          type: "p",
           props: {
             style: {
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              maxWidth: "1000px",
+              margin: 0,
+              fontSize: "30px",
+              lineHeight: 1.4,
+              color: MUTED,
+              maxWidth: "840px",
             },
-            children: [
-              {
-                type: "h1",
-                props: {
-                  style: {
-                    margin: 0,
-                    fontSize: "66px",
-                    lineHeight: 1.05,
-                    letterSpacing: "-0.03em",
-                    fontWeight: 700,
-                    color: INK,
-                  },
-                  children: title,
-                },
-              },
-              {
-                type: "p",
-                props: {
-                  style: {
-                    margin: 0,
-                    fontSize: "28px",
-                    lineHeight: 1.4,
-                    color: MUTED,
-                    maxWidth: "960px",
-                  },
-                  children: description,
-                },
-              },
-            ],
-          },
-        },
-        {
-          type: "div",
-          props: {
-            style: {
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              fontSize: "21px",
-              color: SOFT,
-              borderTop: `1px solid ${HAIRLINE}`,
-              paddingTop: "26px",
-            },
-            children: [
-              {
-                type: "div",
-                props: {
-                  style: { display: "flex" },
-                  children: siteConfig.tagline,
-                },
-              },
-              {
-                type: "div",
-                props: {
-                  style: { display: "flex" },
-                  children: pagePath,
-                },
-              },
-            ],
+            children: description,
           },
         },
       ],
