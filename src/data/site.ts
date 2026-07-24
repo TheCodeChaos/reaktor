@@ -69,59 +69,27 @@ export const boardPresets = [
 
 export const faqItems = [
   {
-    question: "How does a chain reaction start?",
+    question: "How do I play?",
     body: [
-      "Corners burst at 2 atoms, edges at 3, and center cells at 4; when a cell bursts, atoms spread to adjacent cells and can trigger immediate cascades.",
+      "Tap an empty cell or one you own to add an atom. Corners burst at 2 atoms, edges at 3, and center cells at 4. A burst sends one atom into each neighbour and captures those cells, which can cascade.",
     ],
   },
   {
-    question: "How many players can join a match?",
-    body: ["Reaktor supports 2 to 6 players."],
-  },
-  {
-    question: "What board sizes are available?",
-    body: ["The current presets are 6 x 5, 9 x 6, and 12 x 8."],
-  },
-  {
-    question: "Can I replay the last blast sequence?",
+    question: "How do I win?",
     body: [
-      "Yes, the replay control can step through the most recent explosion chain.",
+      "Clear every rival atom off the board. A player is out once they have no atoms left.",
     ],
   },
   {
-    question: "When is a player eliminated?",
+    question: "Can I undo a move or replay a chain?",
     body: [
-      "A player is eliminated once their atoms are fully cleared from the board after turns are in progress.",
+      "Yes to both. Undo steps back the last atom during a live match, and the replay control walks through the most recent explosion.",
     ],
   },
   {
-    question: "Do captured cells switch owner during explosions?",
+    question: "Are games saved?",
     body: [
-      "Yes, captured atoms immediately flip to the active player while the chain is resolving.",
-    ],
-  },
-  {
-    question: "Which preset is best for beginners?",
-    body: [
-      "6 x 5 is the easiest starting point because turns resolve quickly and pressure is easier to read.",
-    ],
-  },
-  {
-    question: "Can I undo a move?",
-    body: [
-      "Yes, an undo button is available during any live match and steps back the last placed atom.",
-    ],
-  },
-  {
-    question: "Are games saved automatically?",
-    body: [
-      "Yes, active sessions are saved after every turn. The home screen lists all in-progress games so you can resume or delete them at any time.",
-    ],
-  },
-  {
-    question: "Where should I report bugs?",
-    body: [
-      "Use the GitHub Issues link from the Support page and include board size, player count, and reproduction steps.",
+      "Every turn is saved on your device. Unfinished matches are listed on the home screen to resume or delete.",
     ],
   },
 ] as const;
@@ -180,23 +148,11 @@ export const authors = {
   jitendra: developers[2],
 } as const;
 
-export const credits = [
-  {
-    title: "App",
-    items: [
-      "Flutter",
-      "Riverpod for state management",
-      "SharedPreferences for local persistence",
-      "audioplayers for music and sound effects",
-    ],
-  },
-  {
-    title: "Website",
-    items: [
-      "Astro",
-      "Pagefind for client-side search",
-      "Lucide for icons",
-      "Giscus for comments",
-    ],
-  },
+export const builtWith = [
+  "Flutter",
+  "Riverpod",
+  "Astro",
+  "Pagefind",
+  "Lucide",
+  "Giscus",
 ] as const;

@@ -4,7 +4,7 @@ import BackToTop from '../components/BackToTop.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import Layout from '../layouts/Layout.astro';
-import { developers, featureCards } from '../data/site';
+import { builtWith, developers, featureCards } from '../data/site';
 ---
 
 <Layout title="About" description="What Reaktor is and who builds it.">
@@ -89,6 +89,11 @@ import { developers, featureCards } from '../data/site';
             ))
           }
         </div>
+      </section>
+
+      <section class="section built-with" data-reveal>
+        <h2 class="section-title">Built with</h2>
+        <p>{builtWith.join(' · ')}</p>
       </section>
     </main>
   </div>
@@ -188,6 +193,16 @@ import { developers, featureCards } from '../data/site';
 
   .team-links a:hover {
     color: var(--text);
+  }
+
+  .built-with {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .built-with p {
+    margin: 0;
+    color: var(--text-muted);
   }
 
   @media (max-width: 980px) {

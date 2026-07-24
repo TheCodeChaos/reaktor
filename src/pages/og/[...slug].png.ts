@@ -26,11 +26,6 @@ const staticPages = [
     description: "Short, practical notes on playing better.",
   },
   {
-    slug: "credits",
-    title: "Credits",
-    description: "The tools behind the game and this site.",
-  },
-  {
     slug: "privacy",
     title: "Privacy Policy",
     description: "Privacy policy for the Reaktor app and website.",
