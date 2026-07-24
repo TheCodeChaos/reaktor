@@ -18,15 +18,8 @@ const posts = (await getCollection('blog')).sort(
   <div class="page-shell">
     <main class="container blog-page" data-pagefind-body>
       <section class="section blog-hero" data-reveal>
-        <h1 class="page-title">Simple notes to help you play better.</h1>
-        <p class="lede">
-          Every post is short, practical, and focused on gameplay decisions that matter in real matches.
-        </p>
-
-        <div class="blog-strip" aria-label="Blog summary">
-          <span><strong>{posts.length}</strong> total posts</span>
-          <span><strong>{new Set(posts.flatMap(post => post.data.tags)).size}</strong> active tags</span>
-        </div>
+        <h1 class="page-title">Blog</h1>
+        <p class="lede">Short, practical notes on playing better.</p>
       </section>
 
       <section class="section blog-list" data-reveal>
@@ -70,23 +63,6 @@ const posts = (await getCollection('blog')).sort(
   .blog-hero {
     display: grid;
     gap: 0.95rem;
-  }
-
-  .blog-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem 1rem;
-  }
-
-  .blog-strip span {
-    color: var(--text-muted);
-    font-size: 0.94rem;
-  }
-
-  .blog-strip strong {
-    color: var(--text);
-    font-weight: 600;
-    margin-right: 0.3rem;
   }
 
   .blog-list {
