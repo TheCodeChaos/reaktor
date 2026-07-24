@@ -7,6 +7,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 import BackToTop from '../components/BackToTop.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import AuthorBadge from '../components/AuthorBadge.astro';
+import Giscus from '../components/Giscus.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import { authors as authorDirectory } from '../data/site';
 
@@ -67,6 +68,7 @@ const authorNames = authors.map(
         </div>
         <div class="article-prose">
           <slot />
+          <Giscus />
         </div>
       </div>
     </main>

@@ -18,6 +18,7 @@ export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/developers", label: "Developers" },
   { href: "/support", label: "Support" },
+  { href: "/feedback", label: "Feedback" },
 ] as const;
 
 export const playLink = {
