@@ -187,28 +187,21 @@ export const authors = {
 
 export const credits = [
   {
-    title: "App Stack",
+    title: "App",
     items: [
-      "Flutter for cross-platform delivery",
+      "Flutter",
       "Riverpod for state management",
-      "SharedPreferences for persistent sessions and leaderboard",
-      "Google Fonts for in-app typography",
+      "SharedPreferences for local persistence",
+      "audioplayers for music and sound effects",
     ],
   },
   {
-    title: "Website Stack",
+    title: "Website",
     items: [
-      "Astro for the static site architecture",
-      "Pagefind for client-side static search",
-      "Lucide icons for the interface system",
-      "Markdown content collections for the blog",
-    ],
-  },
-  {
-    title: "Design Notes",
-    items: [
-      "The ink-on-ivory palette and pinwheel mark mirror the in-app design, with the four player colors as the only accents.",
-      "Support and documentation flow are intentionally tuned for quick scans and practical troubleshooting.",
+      "Astro",
+      "Pagefind for client-side search",
+      "Lucide for icons",
+      "Giscus for comments",
     ],
   },
 ] as const;
