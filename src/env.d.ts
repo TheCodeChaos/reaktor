@@ -1,7 +1,7 @@
-declare module '@pagefind/default-ui' {
+declare module "@pagefind/default-ui" {
   export class PagefindUI {
     constructor(options: Record<string, unknown>);
   }
 }
 
-declare module '@pagefind/default-ui/css/ui.css';
+declare module "@pagefind/default-ui/css/ui.css";

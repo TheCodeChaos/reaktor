@@ -1,17 +1,17 @@
 // @ts-check
-import sitemap from '@astrojs/sitemap';
-import { defineConfig } from 'astro/config';
+import sitemap from "@astrojs/sitemap";
+import { defineConfig } from "astro/config";
 
-const base = process.env.BASE_PATH || '/';
+const base = process.env.BASE_PATH || "/";
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE || 'https://TheCodeChaos.github.io/reaktor/',
+  site: process.env.SITE || "https://TheCodeChaos.github.io/reaktor/",
   base,
   integrations: [sitemap()],
   image: {
     service: {
-      entrypoint: 'astro/assets/services/sharp',
+      entrypoint: "astro/assets/services/sharp",
     },
   },
   vite: {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap");
 
 :root {
   color-scheme: light;
@@ -28,7 +28,7 @@
   --nav-height: 72px;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   color-scheme: dark;
   --bg: #131318;
   --bg-panel: #1c1c23;
@@ -67,7 +67,7 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Outfit', 'Segoe UI', sans-serif;
+  font-family: "Outfit", "Segoe UI", sans-serif;
   line-height: 1.68;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -103,7 +103,7 @@ button {
 
 code,
 pre {
-  font-family: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
 
 .page-bg {
@@ -155,7 +155,7 @@ pre {
 }
 
 .eyebrow::before {
-  content: '';
+  content: "";
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -221,7 +221,10 @@ pre {
   border: none;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .button {
@@ -377,7 +380,9 @@ summary:focus-visible {
 [data-reveal] {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
 }
 
 [data-reveal].is-visible {
