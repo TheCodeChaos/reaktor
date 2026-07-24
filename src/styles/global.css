@@ -154,14 +154,6 @@ pre {
   color: var(--text-soft);
 }
 
-.eyebrow::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--player-red);
-}
-
 .page-title,
 .display-title,
 .section-title {

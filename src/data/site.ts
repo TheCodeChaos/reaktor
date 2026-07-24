@@ -25,42 +25,31 @@ export const playLink = {
   label: "Play",
 } as const;
 
-export const quickFacts = [
-  { label: "Players", value: "2-6" },
-  { label: "Boards", value: "6x5 to 12x8" },
-  { label: "Style", value: "Quick or tactical" },
-] as const;
-
 export const featureCards = [
   {
     title: "Every move changes the map",
     description:
-      "Corners pop at two atoms, edges at three, and center cells at four. That shifting critical mass keeps the board readable and tense.",
+      "Corners pop at two atoms, edges at three, center cells at four.",
   },
   {
     title: "Play around one screen",
-    description:
-      "Spin up a game instantly and pass the device between players.",
+    description: "Start a game instantly and pass the device around.",
   },
   {
     title: "Built for dramatic reversals",
-    description:
-      "Captured cells immediately flip ownership during a blast, so one perfectly timed burst can erase a lead and change the whole table mood.",
+    description: "One well-timed burst can erase a lead.",
   },
   {
     title: "Replay the last explosion",
-    description:
-      "The game records every explosion step and can replay the previous chain sequence so players can study exactly how the board swung.",
+    description: "Step through the previous chain to see how the board swung.",
   },
   {
     title: "Undo the last move",
-    description:
-      "A full move history is kept throughout each game, so any player can undo the most recent atom placement while a match is still live.",
+    description: "Any player can take back the most recent placement.",
   },
   {
     title: "Sessions persist and resume",
-    description:
-      "Active games are saved automatically after every turn. Any unfinished match can be picked up from the home screen without losing board state or turn order.",
+    description: "Games save after every turn and resume from the home screen.",
   },
 ] as const;
 
@@ -68,20 +57,17 @@ export const boardPresets = [
   {
     name: "Sprint",
     size: "6 x 5",
-    summary:
-      "Tight, fast rounds where corners become the opening battleground.",
+    summary: "Tight, fast rounds.",
   },
   {
     name: "Classic",
     size: "9 x 6",
-    summary:
-      "Balanced pacing for mixed skill groups and the default home-screen preset.",
+    summary: "Balanced pacing, the default preset.",
   },
   {
     name: "Warzone",
     size: "12 x 8",
-    summary:
-      "Long-form matches with room for alliances, feints, and late-game collapses.",
+    summary: "Long matches with late-game collapses.",
   },
 ] as const;
 
