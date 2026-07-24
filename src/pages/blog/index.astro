@@ -5,6 +5,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import Layout from '../../layouts/Layout.astro';
+import { authors } from '../../data/site';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -34,6 +35,13 @@ const posts = (await getCollection('blog')).sort(
               <span class="post-main">
                 <span class="post-title">{post.data.title}</span>
                 <span class="post-desc">{post.data.description}</span>
+                <span class="post-author">
+                  {
+                    post.data.authors
+                      .map(id => authors[id as keyof typeof authors]?.name ?? id)
+                      .join(', ')
+                  }
+                </span>
               </span>
             </a>
           ))
@@ -98,6 +106,12 @@ const posts = (await getCollection('blog')).sort(
   .post-desc {
     color: var(--text-muted);
     font-size: 0.99rem;
+  }
+
+  .post-author {
+    margin-top: 0.16rem;
+    color: var(--text-soft);
+    font-size: 0.88rem;
   }
 
   @media (max-width: 780px) {
