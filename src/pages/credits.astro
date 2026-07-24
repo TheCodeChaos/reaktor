@@ -63,27 +63,9 @@ import { credits } from '../data/site';
   }
 
   .credit-group {
-    position: relative;
-    border: 1px solid var(--line-soft);
     border-radius: var(--radius-md);
-    padding: 1rem;
-    background:
-      radial-gradient(
-        circle at calc(84% - var(--group-index) * 11%) 26%,
-        rgba(62, 194, 255, 0.15),
-        transparent 36%
-      ),
-      color-mix(in srgb, var(--panel) 84%, transparent);
-    overflow: hidden;
-  }
-
-  .credit-group::before {
-    content: '';
-    position: absolute;
-    inset: 0 auto auto 0;
-    width: 44%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent 82%);
+    padding: 1.25rem;
+    background: var(--panel);
   }
 
   .credit-label {
@@ -96,8 +78,9 @@ import { credits } from '../data/site';
 
   .credit-group h2 {
     margin: 0 0 0.7rem;
-    font-family: 'Fraunces', 'Outfit', serif;
-    font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.3rem, 2.1vw, 1.6rem);
     line-height: 1.08;
   }
 
@@ -110,10 +93,9 @@ import { credits } from '../data/site';
   }
 
   .credit-group li {
-    border: 1px solid var(--line-soft);
-    border-radius: 12px;
-    padding: 0.62rem 0.68rem;
-    background: color-mix(in srgb, var(--bg-panel) 74%, transparent);
+    border-radius: var(--radius-sm);
+    padding: 0.62rem 0.72rem;
+    background: var(--surface-dim);
     color: var(--text-muted);
     line-height: 1.5;
   }
@@ -128,13 +110,12 @@ import { credits } from '../data/site';
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    border: 1px solid var(--line-soft);
     border-radius: 999px;
     padding: 0.26rem 0.7rem;
-    color: var(--text-soft);
+    color: var(--text-muted);
     font-size: 0.82rem;
     letter-spacing: 0.03em;
-    background: color-mix(in srgb, var(--panel) 82%, transparent);
+    background: var(--surface-dim);
   }
 
   .credit-strip strong {
