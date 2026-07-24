@@ -282,14 +282,20 @@ summary:focus-visible {
   gap: 0.48rem;
 }
 
-.tag {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  background: var(--surface-dim);
-  padding: 0.18rem 0.68rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
+/* Scroll without visible scrollbars, site-wide. */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+* {
+  scrollbar-width: none;
 }
 
 .article-prose {

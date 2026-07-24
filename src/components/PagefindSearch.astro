@@ -129,6 +129,12 @@ const statusId = `${idPrefix}-status`;
     padding-right: 2.85rem !important;
   }
 
+  .pagefind-ui__search-input:focus,
+  .pagefind-ui__search-input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--text) 11%, transparent);
+  }
+
   .pagefind-ui__search-input::placeholder {
     color: var(--text-soft) !important;
   }
