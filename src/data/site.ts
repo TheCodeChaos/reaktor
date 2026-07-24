@@ -5,9 +5,7 @@ export const siteConfig = {
   description:
     "Reaktor is a multiplayer strategy game for 2 to 6 players with multiple board sizes, and dramatic chain bursts.",
   siteUrl: "https://TheCodeChaos.github.io/reaktor/",
-  repoUrl: "https://github.com/TheCodeChaos/reaktor",
   issuesUrl: "https://github.com/TheCodeChaos/reaktor/issues",
-  releasesUrl: "https://github.com/TheCodeChaos/reaktor/releases",
   appUrl: "https://TheCodeChaos.github.io/reaktor/app/",
   searchHint: "Ctrl+K",
 } as const;

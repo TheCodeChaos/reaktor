@@ -25,12 +25,12 @@ const primaryLink = author.links.github ?? website;
       rel="noreferrer"
       aria-label={`Open ${author.name} profile`}
     >
-      <span class="author-avatar">{author.initials}</span>
+      <img class="author-avatar" src={author.avatar} alt="" loading="lazy" />
       <span>{author.name}</span>
     </a>
   ) : (
     <span class="author-badge">
-      <span class="author-avatar">{author.initials}</span>
+      <img class="author-avatar" src={author.avatar} alt="" loading="lazy" />
       <span>{author.name}</span>
     </span>
   )
@@ -56,15 +56,9 @@ const primaryLink = author.links.github ?? website;
   }
 
   .author-avatar {
-    display: inline-grid;
-    place-items: center;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background: var(--primary);
-    color: var(--on-primary);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    object-fit: cover;
   }
 </style>

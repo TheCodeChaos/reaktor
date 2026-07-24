@@ -1,5 +1,5 @@
 ---
-import { GitBranch, Menu, Moon, Search, Sun, X } from '@lucide/astro';
+import { Menu, Moon, Search, Sun, X } from '@lucide/astro';
 import { navLinks, playLink, siteConfig } from '../data/site';
 import SearchModal from './SearchModal.astro';
 
@@ -42,9 +42,6 @@ function isActive(href: string) {
       <button class="search-link" type="button" data-open-search aria-label="Search the site">
         <Search size={16} /> Search
       </button>
-      <a href={siteConfig.repoUrl} class="repo-link" target="_blank" rel="noreferrer">
-        <GitBranch size={16} /> Repo
-      </a>
       <a href={playLink.href} class="play-link" target="_blank" rel="noreferrer">
         Play
       </a>
@@ -86,9 +83,6 @@ function isActive(href: string) {
             </a>
           ))
         }
-        <a href={siteConfig.repoUrl} class="mobile-link" target="_blank" rel="noreferrer">
-          Project repository
-        </a>
         <a href={playLink.href} class="mobile-play" target="_blank" rel="noreferrer">
           Play game
         </a>
@@ -217,7 +211,6 @@ function isActive(href: string) {
   }
 
   .search-link,
-  .repo-link,
   .play-link,
   .theme-toggle,
   .menu-toggle {
@@ -227,8 +220,7 @@ function isActive(href: string) {
     min-height: 39px;
   }
 
-  .search-link,
-  .repo-link {
+  .search-link {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -238,8 +230,7 @@ function isActive(href: string) {
     cursor: pointer;
   }
 
-  .search-link:hover,
-  .repo-link:hover {
+  .search-link:hover {
     color: var(--text);
     background: var(--surface-dim);
   }
@@ -403,8 +394,7 @@ function isActive(href: string) {
   }
 
   @media (max-width: 820px) {
-    .search-link,
-    .repo-link {
+    .search-link {
       display: none;
     }
 
