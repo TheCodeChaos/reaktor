@@ -268,4 +268,58 @@ const highlights = featureCards.slice(0, 3);
       padding-top: 0;
     }
   }
+
+  @media (max-width: 640px) {
+    .hero {
+      gap: 1.05rem;
+      padding: 1.6rem 0 2.8rem;
+    }
+
+    .hero-logo {
+      width: 4.6rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero .display-title {
+      font-size: clamp(2.1rem, 9.5vw, 2.9rem);
+    }
+
+    .hero .lede {
+      font-size: 1rem;
+    }
+
+    .highlight-grid {
+      gap: 1.5rem;
+    }
+
+    .preset-lane {
+      gap: 1.25rem;
+    }
+
+    .preset {
+      display: grid;
+      grid-template-columns: 4.4rem 1fr;
+      column-gap: 1rem;
+      align-items: baseline;
+    }
+
+    .preset-size {
+      grid-row: 1 / span 2;
+      font-size: 1.95rem;
+    }
+
+    .preset h3 {
+      grid-column: 2;
+      margin: 0;
+    }
+
+    .preset-summary {
+      grid-column: 2;
+      margin: 0.1rem 0 0;
+    }
+
+    .journal-row {
+      padding: 0.85rem 0.9rem;
+    }
+  }
 </style>
