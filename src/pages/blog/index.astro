@@ -29,18 +29,30 @@ const posts = (await getCollection('blog')).sort(
               class="post-row"
               href={`${import.meta.env.BASE_URL}/blog/${post.id}/`.replace(/\/\//g, '/')}
             >
-              <span class="post-meta">
-                <FormattedDate date={post.data.pubDate} />
-              </span>
+              <img
+                class="post-cover"
+                src={`${import.meta.env.BASE_URL}/og/blog/${post.id}.png`.replace(/\/\//g, '/')}
+                alt=""
+                width="1200"
+                height="630"
+                loading="lazy"
+              />
               <span class="post-main">
                 <span class="post-title">{post.data.title}</span>
                 <span class="post-desc">{post.data.description}</span>
-                <span class="post-author">
+                <span class="post-meta">
                   {
-                    post.data.authors
-                      .map(id => authors[id as keyof typeof authors]?.name ?? id)
-                      .join(', ')
+                    post.data.authors.map(id => {
+                      const author = authors[id as keyof typeof authors];
+                      return (
+                        <span class="post-author">
+                          <img class="post-avatar" src={author.avatar} alt="" loading="lazy" />
+                          {author.name}
+                        </span>
+                      );
+                    })
                   }
+                  <FormattedDate date={post.data.pubDate} />
                 </span>
               </span>
             </a>
@@ -72,9 +84,9 @@ const posts = (await getCollection('blog')).sort(
 
   .post-row {
     display: grid;
-    grid-template-columns: minmax(110px, 150px) 1fr;
-    gap: 1.1rem;
-    align-items: start;
+    grid-template-columns: 224px 1fr;
+    gap: 1.4rem;
+    align-items: center;
     border-radius: var(--radius-md);
     padding: 1.1rem;
     transition: background 0.2s ease;
@@ -84,10 +96,10 @@ const posts = (await getCollection('blog')).sort(
     background: var(--panel);
   }
 
-  .post-meta {
-    padding-top: 0.24rem;
-    color: var(--text-soft);
-    font-size: 0.9rem;
+  .post-cover {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
   }
 
   .post-main {
@@ -108,20 +120,33 @@ const posts = (await getCollection('blog')).sort(
     font-size: 0.99rem;
   }
 
-  .post-author {
-    margin-top: 0.16rem;
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.8rem;
+    margin-top: 0.3rem;
     color: var(--text-soft);
     font-size: 0.88rem;
+  }
+
+  .post-author {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+  }
+
+  .post-avatar {
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    object-fit: cover;
   }
 
   @media (max-width: 780px) {
     .post-row {
       grid-template-columns: 1fr;
-      gap: 0.4rem;
-    }
-
-    .post-meta {
-      padding-top: 0;
+      gap: 0.8rem;
     }
   }
 </style>
