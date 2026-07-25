@@ -8,7 +8,7 @@ const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
 
 const INK = "#1d1d24";
-const IVORY = "#f7f5ef";
+const NEUTRAL = "#eae8e0";
 const MUTED = "#6e6e78";
 
 const PINWHEEL_COLORS = ["#e23b32", "#2f6fd0", "#2e9e5b", "#e8b62a"];
@@ -168,7 +168,7 @@ export async function renderOgImage(input: OgImageInput) {
         justifyContent: "center",
         textAlign: "center",
         gap: "34px",
-        backgroundColor: IVORY,
+        backgroundColor: NEUTRAL,
         color: INK,
         padding: "90px",
         fontFamily: "Inter",
