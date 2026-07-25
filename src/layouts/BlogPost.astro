@@ -12,15 +12,18 @@ import TableOfContents from '../components/TableOfContents.astro';
 import { authors as authorDirectory } from '../data/site';
 
 type Props = CollectionEntry<'blog'>['data'] & {
+  slug: string;
   headings?: MarkdownHeading[];
 };
 
-const { title, description, pubDate, updatedDate, authors, tags, headings = [] } =
+const { title, description, pubDate, updatedDate, authors, tags, slug, headings = [] } =
   Astro.props;
 
 const authorNames = authors.map(
   authorId => authorDirectory[authorId as keyof typeof authorDirectory]?.name ?? authorId
 );
+
+const coverSrc = `${import.meta.env.BASE_URL}/og/blog/${slug}.png`.replace(/\/\//g, '/');
 ---
 
 <Layout
@@ -42,8 +45,9 @@ const authorNames = authors.map(
           <h1 class="page-title">{title}</h1>
           <p class="lede">{description}</p>
           <div class="meta-row">
+            {authors.map(authorId => <AuthorBadge authorId={authorId as 'ayaan' | 'shravan'} />)}
             <span>
-              Published <FormattedDate date={pubDate} />
+              <FormattedDate date={pubDate} />
             </span>
             {
               updatedDate && (
@@ -53,11 +57,10 @@ const authorNames = authors.map(
               )
             }
           </div>
-          <div class="tag-row">
-            {authors.map(authorId => <AuthorBadge authorId={authorId as 'ayaan' | 'shravan'} />)}
-          </div>
         </div>
       </article>
+
+      <img class="article-cover" src={coverSrc} alt="" width="1200" height="630" />
 
       <div class="section article-layout" data-reveal>
         <div class="toc-wrap">
@@ -90,6 +93,13 @@ const authorNames = authors.map(
     width: 100%;
     display: grid;
     gap: 0.82rem;
+  }
+
+  .article-cover {
+    width: 100%;
+    height: auto;
+    margin-top: 1.2rem;
+    border-radius: var(--radius-lg);
   }
 
   .article-layout {
