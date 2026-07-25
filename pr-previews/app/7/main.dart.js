@@ -95549,7 +95549,7 @@ n.x=i
 i=$.aFu()
 h=A.W(B.vE.gh3(),t.N)
 k=h
-J.er(k,"audio/music/theme.mp3")
+J.er(k,"audio/music/theme.wav")
 s=8
 return A.r(i.Mo(k),$async$kb)
 case 8:p=2
@@ -95620,7 +95620,7 @@ return A.r(m.h0(),$async$kA)
 case 11:s=9
 break
 case 10:s=12
-return A.r(m.pO(new A.yJ("audio/music/theme.mp3",null),n.c),$async$kA)
+return A.r(m.pO(new A.yJ("audio/music/theme.wav",null),n.c),$async$kA)
 case 12:case 9:p=2
 s=6
 break
