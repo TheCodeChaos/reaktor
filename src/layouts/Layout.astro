@@ -185,20 +185,33 @@ const pageSchema = {
   <body class="page-bg">
     <slot />
     <script is:inline>
-      const revealObserver = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-            }
-          });
-        },
-        { threshold: 0.16, rootMargin: '0px 0px -8% 0px' }
-      );
+      const revealTargets = document.querySelectorAll('[data-reveal]');
 
-      document.querySelectorAll('[data-reveal]').forEach(section => {
-        revealObserver.observe(section);
-      });
+      const revealAll = () =>
+        revealTargets.forEach(section => section.classList.add('is-visible'));
+
+      if (
+        !('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ) {
+        revealAll();
+      } else {
+        // A percentage threshold never resolves for sections taller than the
+        // viewport, so reveal on the first visible pixel instead.
+        const revealObserver = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        revealTargets.forEach(section => revealObserver.observe(section));
+      }
     </script>
   </body>
 </html>
