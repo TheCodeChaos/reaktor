@@ -121,16 +121,6 @@ export const developers: readonly Developer[] = [
     },
   },
   {
-    id: "ayaan",
-    name: "Ayaan Shaikh",
-    initials: "AS",
-    avatar: "https://github.com/Ayaan-7091.png",
-    links: {
-      github: "https://github.com/Ayaan-7091",
-      linkedin: "https://www.linkedin.com/in/ayaan-shaikh-699a482a8/",
-    },
-  },
-  {
     id: "jitendra",
     name: "Jitendra Verma",
     initials: "JV",
@@ -140,12 +130,22 @@ export const developers: readonly Developer[] = [
       website: "https://jitendravjh.github.io",
     },
   },
+  {
+    id: "ayaan",
+    name: "Ayaan Shaikh",
+    initials: "AS",
+    avatar: "https://github.com/Ayaan-7091.png",
+    links: {
+      github: "https://github.com/Ayaan-7091",
+      linkedin: "https://www.linkedin.com/in/ayaan-shaikh-699a482a8/",
+    },
+  },
 ];
 
 export const authors = {
   shravan: developers[0],
-  ayaan: developers[1],
-  jitendra: developers[2],
+  jitendra: developers[1],
+  ayaan: developers[2],
 } as const;
 
 export const builtWith = [
