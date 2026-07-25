@@ -17,7 +17,6 @@
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
     "@fontsource/inter": "^5.2.8",
-    "@lucide/astro": "^1.8.0",
     "@pagefind/default-ui": "^1.5.2",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^6.1.6",

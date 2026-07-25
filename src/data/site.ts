@@ -159,6 +159,5 @@ export const builtWith = [
   "Riverpod",
   "Astro",
   "Pagefind",
-  "Lucide",
   "Giscus",
 ] as const;

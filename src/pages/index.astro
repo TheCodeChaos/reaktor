@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { ArrowRight } from '@lucide/astro';
+import Icon from '../components/Icon.astro';
 import BackToTop from '../components/BackToTop.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -79,7 +79,7 @@ const highlights = featureCards.slice(0, 3);
         <div class="section-headline split-head">
           <h2 class="section-title">From the blog</h2>
           <a class="button-ghost" href={`${import.meta.env.BASE_URL}/blog`.replace(/\/\//g, '/')}>
-            Browse all <ArrowRight size={16} />
+            Browse all <Icon name="arrow-right" size={16} />
           </a>
         </div>
 

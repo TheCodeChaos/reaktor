@@ -1,5 +1,5 @@
 ---
-import { Bug } from '@lucide/astro';
+import Icon from '../components/Icon.astro';
 import BackToTop from '../components/BackToTop.astro';
 import FAQList from '../components/FAQList.astro';
 import Giscus from '../components/Giscus.astro';
@@ -17,7 +17,7 @@ import { faqItems, siteConfig } from '../data/site';
       <section class="section support-hero" data-reveal>
         <h1 class="page-title">Support</h1>
         <a class="report-link" href={siteConfig.issuesUrl} target="_blank" rel="noreferrer">
-          <Bug size={16} /> Report a bug
+          <Icon name="bug" size={16} /> Report a bug
         </a>
       </section>
 

@@ -1,5 +1,5 @@
 ---
-import { Rss, Search } from '@lucide/astro';
+import Icon from './Icon.astro';
 import { navLinks, siteConfig } from '../data/site';
 ---
 
@@ -34,10 +34,10 @@ import { navLinks, siteConfig } from '../data/site';
             Report issue
           </a>
           <a href={`${import.meta.env.BASE_URL}/rss.xml`.replace(/\/\//g, '/')}>
-            <Rss size={16} /> RSS
+            <Icon name="rss" size={16} /> RSS
           </a>
           <button type="button" class="footer-search" data-open-search>
-            <Search size={16} /> Search
+            <Icon name="search" size={16} /> Search
           </button>
         </div>
       </div>
