@@ -90,7 +90,7 @@ interface Props {
 }
 
 const { name, size = 18, class: className } = Astro.props;
-const icon = icons[name];
+const icon: IconDef = icons[name];
 ---
 
 <svg

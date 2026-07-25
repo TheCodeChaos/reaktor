@@ -61,13 +61,8 @@ const highlights = featureCards.slice(0, 3);
           {
             boardPresets.map(preset => (
               <article class="preset">
-                <div class="preset-preview" aria-hidden="true">
-                  <div class="preset-grid" style={`--cols:${preset.cols};`}>
-                    {Array.from({ length: preset.cols * preset.rows }).map(() => <span />)}
-                  </div>
-                </div>
-                <h3>{preset.name}</h3>
                 <p class="preset-size">{preset.size}</p>
+                <h3>{preset.name}</h3>
                 <p class="preset-summary">{preset.summary}</p>
               </article>
             ))
@@ -178,55 +173,27 @@ const highlights = featureCards.slice(0, 3);
   .preset-lane {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.85rem;
-  }
-
-  .preset {
-    display: grid;
-    justify-items: start;
-    gap: 0.3rem;
-    border-radius: var(--radius-md);
-    padding: 1.4rem;
-    background: var(--panel);
-  }
-
-  /* Each preset previews its own grid shape, to true proportions. A fixed
-     band keeps the taller boards from pushing their titles out of line. */
-  .preset-preview {
-    display: flex;
-    align-items: flex-end;
-    height: 88px;
-    margin-bottom: 1.1rem;
-  }
-
-  .preset-grid {
-    display: grid;
-    grid-template-columns: repeat(var(--cols), 5px);
-    gap: 2px;
-  }
-
-  .preset-grid span {
-    aspect-ratio: 1;
-    border-radius: 1px;
-    background: color-mix(in srgb, var(--text) 17%, transparent);
-  }
-
-  .preset h3 {
-    margin: 0;
-    font-weight: 650;
-    font-size: 1.12rem;
-    letter-spacing: -0.01em;
+    gap: 2.4rem;
   }
 
   .preset-size {
-    margin: 0.1rem 0 0;
-    color: var(--text-soft);
-    font-size: 0.86rem;
-    letter-spacing: 0.06em;
+    margin: 0;
+    font-size: clamp(2.6rem, 4.6vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .preset h3 {
+    margin: 0.7rem 0 0;
+    font-weight: 650;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
   }
 
   .preset-summary {
-    margin: 0.5rem 0 0;
+    margin: 0.3rem 0 0;
     color: var(--text-muted);
     font-size: 0.95rem;
   }
@@ -289,6 +256,7 @@ const highlights = featureCards.slice(0, 3);
 
     .preset-lane {
       grid-template-columns: 1fr;
+      gap: 1.9rem;
     }
 
     .journal-row {
