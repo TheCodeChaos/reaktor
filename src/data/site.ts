@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "Reaktor",
   tagline: "Fast rounds. Big reversals. Pure chain-reaction chaos.",
   description:
-    "Reaktor is a multiplayer strategy game for 2 to 6 players with multiple board sizes, and dramatic chain bursts.",
+    "Reaktor is a chain-reaction strategy game for 1 to 6 players, with four computer difficulties, multiple board sizes, and dramatic chain bursts.",
   siteUrl: "https://TheCodeChaos.github.io/reaktor/",
   issuesUrl: "https://github.com/TheCodeChaos/reaktor/issues",
   appUrl: "https://TheCodeChaos.github.io/reaktor/app/",
@@ -28,12 +28,18 @@ export const featureCards = [
       "Corners pop at two atoms, edges at three, center cells at four.",
   },
   {
-    title: "Play around one screen",
-    description: "Start a game instantly and pass the device around.",
+    title: "Play solo or pass the phone",
+    description:
+      "Fill any seat with a computer opponent, or hand the device around the table.",
   },
   {
     title: "Built for dramatic reversals",
     description: "One well-timed burst can erase a lead.",
+  },
+  {
+    title: "Four levels of opponent",
+    description:
+      "From a beginner who walks into cascades to an expert who reads your setups.",
   },
   {
     title: "Replay the last explosion",
@@ -78,6 +84,12 @@ export const faqItems = [
     question: "How do I win?",
     body: [
       "Clear every rival atom off the board. A player is out once they have no atoms left.",
+    ],
+  },
+  {
+    question: "Can I play on my own?",
+    body: [
+      "Yes. In setup, tap the Human button on any seat and pick a difficulty from Easy to Expert. Bots and people can share the same match, so you can play one on one against the computer or fill out a six-player board.",
     ],
   },
   {
