@@ -88,11 +88,15 @@ const posts = (await getCollection('blog')).sort(
     gap: 1.4rem;
     align-items: center;
     border-radius: var(--radius-md);
+    border: var(--border) solid transparent;
     padding: 1.1rem;
-    transition: background 0.2s ease;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
   }
 
   .post-row:hover {
+    border-color: var(--outline);
     background: var(--panel);
   }
 
@@ -100,6 +104,7 @@ const posts = (await getCollection('blog')).sort(
     width: 100%;
     height: auto;
     border-radius: var(--radius-sm);
+    border: var(--border) solid var(--outline);
   }
 
   .post-main {

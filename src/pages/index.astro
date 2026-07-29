@@ -216,11 +216,15 @@ const highlights = featureCards.slice(0, 3);
     gap: 1.1rem;
     align-items: start;
     border-radius: var(--radius-md);
+    border: var(--border) solid transparent;
     padding: 1rem 1.1rem;
-    transition: background 0.2s ease;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
   }
 
   .journal-row:hover {
+    border-color: var(--outline);
     background: var(--panel);
   }
 

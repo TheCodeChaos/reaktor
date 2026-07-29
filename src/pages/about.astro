@@ -121,6 +121,7 @@ import { builtWith, developers, featureCards } from '../data/site';
 
   .pillar {
     border-radius: var(--radius-md);
+    border: var(--border) solid var(--outline);
     padding: 1.25rem;
     background: var(--panel);
   }
@@ -153,8 +154,10 @@ import { builtWith, developers, featureCards } from '../data/site';
     justify-items: center;
     gap: 0.7rem;
     border-radius: var(--radius-md);
+    border: var(--border-thick) solid var(--outline);
     padding: 1.6rem 1.25rem;
     background: var(--panel);
+    box-shadow: var(--lift-sm) var(--lift-sm) 0 var(--shadow);
     text-align: center;
   }
 
@@ -162,6 +165,7 @@ import { builtWith, developers, featureCards } from '../data/site';
     width: 4.2rem;
     height: 4.2rem;
     border-radius: 50%;
+    border: var(--border) solid var(--outline);
     object-fit: cover;
   }
 
@@ -182,7 +186,8 @@ import { builtWith, developers, featureCards } from '../data/site';
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 50%;
-    background: var(--surface-dim);
+    border: 1.8px solid var(--outline);
+    background: var(--panel);
     color: var(--text-muted);
     transition: color 0.2s ease;
   }

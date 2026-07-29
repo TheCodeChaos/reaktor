@@ -7,12 +7,14 @@ import { siteConfig } from "../data/site";
 const OG_WIDTH = 1200;
 const OG_HEIGHT = 630;
 
-const INK = "#1d1d24";
-const NEUTRAL = "#eae8e0";
-const MUTED = "#6e6e78";
+const INK = "#16161a";
+const NEUTRAL = "#f7f2e7";
+const SURFACE = "#fffcf3";
+const MUTED = "#5c5c63";
 
-const PINWHEEL_COLORS = ["#e23b32", "#2f6fd0", "#2e9e5b", "#e8b62a"];
-const PINWHEEL_ANGLES = [-20, -110, -200, -290];
+// Arm colours and sweep angles come straight from PinwheelLogo.
+const PINWHEEL_COLORS = ["#ff6644", "#fbc711", "#89d29f", "#71a3fd"];
+const PINWHEEL_ANGLES = [45, 135, 225, 315];
 
 interface OgImageInput {
   title: string;
@@ -84,55 +86,86 @@ async function getFonts() {
   return cachedFonts;
 }
 
-// Mirrors public/favicon.svg (128 viewBox): four rounded bars swept around a white dot.
+// Ported from PinwheelLogo in the app (lib/widgets/pinwheel_logo.dart). Flutter
+// centres a stroke on the path while CSS borders sit inside the box, so every
+// shape here is grown by one stroke width and its radius by half of one; that
+// is what keeps this drawing identical to the favicon and the in-app mark.
 function pinwheelMark(size: number) {
-  const scale = size / 128;
+  const scale = size / 512;
+  const px = (v: number) => `${v * scale}px`;
 
-  const petals = PINWHEEL_ANGLES.map((angle, index) => ({
+  // Arm: 76x166 path, radius 38, stroke 18, running from y -194 to -28 about a
+  // centre of 236. Grown to a 94x184 border box at (189, 33).
+  const arm = (fill: string, border: string) => ({
     type: "div",
     props: {
       style: {
         position: "absolute",
-        top: "0px",
+        left: px(189),
+        top: px(33),
+        width: px(94),
+        height: px(184),
+        borderRadius: px(47),
+        border: `${px(18)} solid ${border}`,
+        backgroundColor: fill,
+      },
+    },
+  });
+
+  // Rotating about the mark's centre, which is 236 rather than 256: a 472 box
+  // pinned at the origin puts its own midpoint exactly there.
+  const spoke = (angle: number, fill: string, border: string) => ({
+    type: "div",
+    props: {
+      style: {
+        position: "absolute",
         left: "0px",
-        width: `${size}px`,
-        height: `${size}px`,
+        top: "0px",
+        width: px(472),
+        height: px(472),
         display: "flex",
         transform: `rotate(${angle}deg)`,
       },
-      children: [
-        {
-          type: "div",
-          props: {
-            style: {
-              position: "absolute",
-              left: `${67 * scale}px`,
-              top: `${54 * scale}px`,
-              width: `${46 * scale}px`,
-              height: `${20 * scale}px`,
-              borderRadius: `${10 * scale}px`,
-              backgroundColor: PINWHEEL_COLORS[index],
-            },
-          },
-        },
-      ],
+      children: [arm(fill, border)],
     },
-  }));
+  });
 
-  const dot = {
+  // Dot: radius 47 plus an 18 stroke, so a 112 border box at (180, 180).
+  const dot = (fill: string, border: string) => ({
     type: "div",
     props: {
       style: {
         position: "absolute",
-        left: `${55 * scale}px`,
-        top: `${55 * scale}px`,
-        width: `${18 * scale}px`,
-        height: `${18 * scale}px`,
-        borderRadius: "50%",
-        backgroundColor: "#ffffff",
+        left: px(180),
+        top: px(180),
+        width: px(112),
+        height: px(112),
+        borderRadius: px(56),
+        border: `${px(18)} solid ${border}`,
+        backgroundColor: fill,
       },
     },
-  };
+  });
+
+  const layer = (offset: number, fill: string | null, border: string) => ({
+    type: "div",
+    props: {
+      style: {
+        position: "absolute",
+        left: px(offset),
+        top: px(offset),
+        width: px(512),
+        height: px(512),
+        display: "flex",
+      },
+      children: [
+        ...PINWHEEL_ANGLES.map((angle, i) =>
+          spoke(angle, fill ?? PINWHEEL_COLORS[i], border),
+        ),
+        dot(fill ?? SURFACE, border),
+      ],
+    },
+  });
 
   return {
     type: "div",
@@ -143,7 +176,7 @@ function pinwheelMark(size: number) {
         width: `${size}px`,
         height: `${size}px`,
       },
-      children: [...petals, dot],
+      children: [layer(22, INK, INK), layer(0, null, INK)],
     },
   };
 }
@@ -174,7 +207,7 @@ export async function renderOgImage(input: OgImageInput) {
         fontFamily: "Inter",
       },
       children: [
-        pinwheelMark(132),
+        pinwheelMark(176),
         {
           type: "h1",
           props: {
