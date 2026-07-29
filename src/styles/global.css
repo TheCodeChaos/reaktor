@@ -2,49 +2,61 @@
 
 :root {
   color-scheme: light;
-  --bg: #f7f5ef;
-  --bg-panel: #ffffff;
-  --panel: #ffffff;
-  --surface-dim: #eeebe2;
-  --line: #e4e1d6;
-  --line-soft: #ece9df;
-  --text: #1d1d24;
-  --text-muted: #6e6e78;
-  --text-soft: #9a9aa3;
-  --primary: #23232b;
-  --on-primary: #ffffff;
-  --accent: #1d1d24;
-  --accent-2: #2f6fd0;
-  --accent-3: #2e9e5b;
-  --player-red: #e23b32;
-  --player-blue: #2f6fd0;
-  --player-green: #2e9e5b;
-  --player-yellow: #e8b62a;
-  --focus: rgba(29, 29, 36, 0.35);
+  /* Ported from the app's Palette.light in lib/theme.dart. Keep the two in
+     step: the site and the store screenshots sit side by side on Play. */
+  --bg: #f7f2e7;
+  --bg-panel: #fffcf3;
+  --panel: #fffcf3;
+  --surface-dim: #ede7d8;
+  --line: #dcd5c4;
+  --line-soft: #e4dccb;
+  --text: #16161a;
+  --text-muted: #5c5c63;
+  --text-soft: #78787f;
+  --primary: #ffd84a;
+  --on-primary: #16161a;
+  --accent: #ffd84a;
+  --on-accent: #16161a;
+  --danger: #e8564b;
+  --gold: #c9971b;
+  /* Outline and shadow are separate tokens even though they match in light
+     mode: dark mode pushes the shadow to pure black while the outline stays a
+     hair lighter, which is what keeps a dark card from dissolving. */
+  --outline: #16161a;
+  --shadow: #16161a;
+  --focus: #16161a;
   --container: 1140px;
-  --radius-lg: 26px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --border: 2px;
+  --border-thick: 2.6px;
+  --lift: 4px;
+  --lift-sm: 3px;
   --nav-height: 72px;
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #131318;
-  --bg-panel: #1c1c23;
-  --panel: #1c1c23;
-  --surface-dim: #24242d;
-  --line: #2a2a33;
-  --line-soft: #232329;
-  --text: #f0efe9;
-  --text-muted: #a6a6b0;
-  --text-soft: #71717c;
-  --primary: #ecebe4;
-  --on-primary: #1d1d24;
-  --accent: #f0efe9;
-  --accent-2: #5a92e8;
-  --accent-3: #43b575;
-  --focus: rgba(240, 239, 233, 0.4);
+  /* Palette.dark from lib/theme.dart. */
+  --bg: #333340;
+  --bg-panel: #191920;
+  --panel: #191920;
+  --surface-dim: #121217;
+  --line: #3f3f4b;
+  --line-soft: #34343e;
+  --text: #f2efe4;
+  --text-muted: #a9a9b4;
+  --text-soft: #83838f;
+  --primary: #ffd84a;
+  --on-primary: #16161a;
+  --accent: #ffd84a;
+  --on-accent: #16161a;
+  --danger: #e8564b;
+  --gold: #d8a832;
+  --outline: #0b0b0e;
+  --shadow: #000000;
+  --focus: #f2efe4;
 }
 
 *,
@@ -75,7 +87,8 @@ body {
 }
 
 body::selection {
-  background: rgba(29, 29, 36, 0.14);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 img,
@@ -91,9 +104,14 @@ a {
   text-decoration: none;
 }
 
-a:active,
-button:active {
-  opacity: 0.72;
+/* Shared press mechanic, matching NeoPressable in the app: while held, a box
+   slides onto its own shadow and lands flat on the page. */
+.neo-press:active,
+.button:active,
+.button-secondary:active,
+.button-ghost:active {
+  transform: translate(var(--lift), var(--lift));
+  box-shadow: 0 0 0 var(--shadow);
 }
 
 button,
@@ -151,7 +169,9 @@ pre {
 .surface,
 .card {
   border-radius: var(--radius-md);
+  border: var(--border) solid var(--outline);
   background: var(--panel);
+  box-shadow: var(--lift) var(--lift) 0 var(--shadow);
 }
 
 .surface {
@@ -160,6 +180,14 @@ pre {
 
 .card {
   padding: 1.1rem;
+}
+
+/* A flat panel: outlined, but sitting on the page rather than above it. Used
+   where a grid of shadowed boxes would read as clutter. */
+.surface-flat {
+  border-radius: var(--radius-md);
+  border: var(--border) solid var(--outline);
+  background: var(--panel);
 }
 
 .eyebrow {
@@ -208,9 +236,18 @@ pre {
   max-width: 64ch;
 }
 
+/* The app's marker highlight (_MarkerPainter in lib/widgets/neo.dart): a band
+   of accent from 12% to 102% of the line, overhanging slightly on both sides.
+   It covers nearly the whole glyph, so the text goes to ink in both themes;
+   leaving it on --text would put cream on yellow in dark mode. */
 .accent-text,
 .gradient-text {
-  color: var(--player-red);
+  padding: 0 0.14em;
+  background-image: linear-gradient(var(--accent) 0%, var(--accent) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 90%;
+  background-position: 0 120%;
+  color: var(--on-accent);
 }
 
 .button-row {
@@ -229,50 +266,54 @@ pre {
   gap: 0.5rem;
   min-height: 48px;
   padding: 0.68rem 1.3rem;
-  border-radius: 14px;
-  border: none;
-  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: var(--border-thick) solid var(--outline);
+  box-shadow: var(--lift) var(--lift) 0 var(--shadow);
+  font-weight: 700;
   cursor: pointer;
   transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    opacity 0.2s ease;
+    transform 0.09s ease,
+    box-shadow 0.09s ease,
+    background 0.2s ease;
 }
 
 .button {
-  background: var(--primary);
-  color: var(--on-primary);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .button.button-play {
-  background: var(--primary);
-  color: var(--on-primary);
   order: -1;
 }
 
 .button-secondary {
-  background: var(--surface-dim);
+  background: var(--panel);
   color: var(--text);
 }
 
+/* Ghost keeps the outline off until it is wanted, so a row of links does not
+   turn into a wall of boxes. */
 .button-ghost {
+  border-color: transparent;
   background: transparent;
+  box-shadow: none;
   color: var(--text-muted);
 }
 
-.button:hover {
-  opacity: 0.88;
-  transform: translateY(-1px);
+.button:hover,
+.button-secondary:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: calc(var(--lift) + 1px) calc(var(--lift) + 1px) 0 var(--shadow);
 }
 
-.button-secondary:hover,
 .button-ghost:hover {
-  transform: translateY(-1px);
+  border-color: var(--outline);
+  background: var(--panel);
   color: var(--text);
 }
 
-.button-ghost:hover {
-  background: var(--surface-dim);
+.button-ghost:active {
+  transform: none;
 }
 
 .button:focus-visible,
@@ -283,8 +324,8 @@ pre {
 .theme-toggle:focus-visible,
 .menu-toggle:focus-visible,
 summary:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
+  outline: var(--border-thick) solid var(--focus);
+  outline-offset: 3px;
 }
 
 .meta-row {
@@ -367,10 +408,16 @@ html::-webkit-scrollbar,
 
 .article-prose a {
   color: var(--text);
-  font-weight: 550;
+  font-weight: 650;
   text-decoration: underline;
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.16em;
-  text-decoration-color: var(--text-soft);
+  text-decoration-color: var(--accent);
+}
+
+.article-prose a:hover {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .article-prose strong {
@@ -381,6 +428,8 @@ html::-webkit-scrollbar,
   margin-left: 0;
   padding: 0.7rem 0.95rem;
   border-radius: var(--radius-sm);
+  border: var(--border) solid var(--outline);
+  border-left-width: 6px;
   background: var(--surface-dim);
   color: var(--text);
 }
@@ -389,13 +438,20 @@ html::-webkit-scrollbar,
   overflow-x: auto;
   padding: 0.9rem;
   border-radius: var(--radius-sm);
+  border: var(--border) solid var(--outline);
   background: var(--surface-dim);
+  box-shadow: var(--lift-sm) var(--lift-sm) 0 var(--shadow);
 }
 
 .article-prose code {
   border-radius: 6px;
+  border: 1.4px solid var(--line);
   background: var(--surface-dim);
   padding: 0.08rem 0.3rem;
+}
+
+.article-prose pre code {
+  border: none;
 }
 
 .article-prose pre code {
