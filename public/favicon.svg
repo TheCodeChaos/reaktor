@@ -1,7 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect x="67" y="54" width="46" height="20" rx="10" fill="#FF2D2D" transform="rotate(-20 64 64)"/>
-  <rect x="67" y="54" width="46" height="20" rx="10" fill="#2E7DFF" transform="rotate(-110 64 64)"/>
-  <rect x="67" y="54" width="46" height="20" rx="10" fill="#2FD64E" transform="rotate(-200 64 64)"/>
-  <rect x="67" y="54" width="46" height="20" rx="10" fill="#FFC83B" transform="rotate(-290 64 64)"/>
-  <circle cx="64" cy="64" r="9" fill="#FFFFFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Reaktor">
+  <!-- Ported from PinwheelLogo in the app (lib/widgets/pinwheel_logo.dart):
+       four capsule arms swept at 45 degree offsets, each outlined in ink and
+       sitting on one shared hard shadow. Constants match the Dart source, so
+       the site mark and the in-app mark are the same drawing. -->
+  <g transform="translate(258.0,258.0)">
+    <g transform="rotate(45)"><rect x="-38" y="-194" width="76" height="166" rx="38" fill="#16161A" stroke="#16161A" stroke-width="18.0"/></g>
+    <g transform="rotate(135)"><rect x="-38" y="-194" width="76" height="166" rx="38" fill="#16161A" stroke="#16161A" stroke-width="18.0"/></g>
+    <g transform="rotate(225)"><rect x="-38" y="-194" width="76" height="166" rx="38" fill="#16161A" stroke="#16161A" stroke-width="18.0"/></g>
+    <g transform="rotate(315)"><rect x="-38" y="-194" width="76" height="166" rx="38" fill="#16161A" stroke="#16161A" stroke-width="18.0"/></g>
+    <circle cx="0" cy="0" r="47.0" fill="#16161A" stroke="#16161A" stroke-width="18.0"/>
+  </g>
+  <g transform="translate(236.0,236.0)">
+    <g transform="rotate(45)"><rect x="-38" y="-194" width="76" height="166" rx="38" fill="#FF6644" stroke="#16161A" stroke-width="18.0"/></g>
+    <g transform="rotate(135)"><rect x="-38" y="-194" width="76" height="166" rx="38" fill="#FBC711" stroke="#16161A" stroke-width="18.0"/></g>
+    <g transform="rotate(225)"><rect x="-38" y="-194" width="76" height="166" rx="38" fill="#89D29F" stroke="#16161A" stroke-width="18.0"/></g>
+    <g transform="rotate(315)"><rect x="-38" y="-194" width="76" height="166" rx="38" fill="#71A3FD" stroke="#16161A" stroke-width="18.0"/></g>
+    <circle cx="0" cy="0" r="47.0" fill="#FFFCF3" stroke="#16161A" stroke-width="18.0"/>
+  </g>
 </svg>
