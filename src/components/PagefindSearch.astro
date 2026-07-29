@@ -88,6 +88,7 @@ const statusId = `${idPrefix}-status`;
 <style is:global>
   .search-shell {
     border-radius: var(--radius-lg);
+    border: var(--border) solid var(--outline);
     background: var(--panel);
     padding: 1.15rem;
   }
@@ -112,17 +113,17 @@ const statusId = `${idPrefix}-status`;
 
   .pagefind-ui {
     margin-top: 1.1rem;
-    --pagefind-ui-border-width: 0;
-    --pagefind-ui-border: transparent;
+    --pagefind-ui-border-width: 2px;
+    --pagefind-ui-border: var(--outline);
     --pagefind-ui-border-radius: var(--radius-sm);
   }
 
   .pagefind-ui__search-input {
     width: 100%;
     border-radius: var(--radius-sm);
-    border: none !important;
-    box-shadow: none;
-    background: var(--surface-dim) !important;
+    border: var(--border) solid var(--outline) !important;
+    box-shadow: var(--lift-sm) var(--lift-sm) 0 var(--shadow);
+    background: var(--panel) !important;
     color: var(--text) !important;
     min-height: 54px;
     padding-left: 2.65rem !important;
@@ -132,7 +133,9 @@ const statusId = `${idPrefix}-status`;
   .pagefind-ui__search-input:focus,
   .pagefind-ui__search-input:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--text) 11%, transparent);
+    box-shadow: var(--lift-sm) var(--lift-sm) 0 var(--shadow);
+    outline: var(--border) solid var(--focus);
+    outline-offset: 2px;
   }
 
   .pagefind-ui__search-input::placeholder {
@@ -173,9 +176,9 @@ const statusId = `${idPrefix}-status`;
      lose on specificity and the padding silently does nothing. */
   .pagefind-ui__result {
     border-radius: var(--radius-sm);
-    border: none !important;
+    border: var(--border) solid var(--outline) !important;
     box-shadow: none;
-    background: var(--surface-dim);
+    background: var(--panel);
     padding: 1rem 1.15rem !important;
     margin-top: 0.75rem;
   }
@@ -198,10 +201,11 @@ const statusId = `${idPrefix}-status`;
   }
 
   .pagefind-ui__button {
-    border-radius: 12px !important;
-    border: none !important;
-    box-shadow: none;
-    background: var(--primary) !important;
+    border-radius: var(--radius-sm) !important;
+    border: var(--border-thick) solid var(--outline) !important;
+    box-shadow: var(--lift-sm) var(--lift-sm) 0 var(--shadow);
+    background: var(--accent) !important;
+    color: var(--on-accent) !important;
     color: var(--on-primary) !important;
     font-weight: 600;
   }

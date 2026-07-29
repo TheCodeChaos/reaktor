@@ -150,7 +150,7 @@ import PagefindSearch from './PagefindSearch.astro';
     border: 0;
     padding: 0;
     margin: 0;
-    background: rgba(19, 19, 24, 0.5);
+    background: color-mix(in srgb, #16161a 62%, transparent);
     cursor: pointer;
   }
 
@@ -159,9 +159,10 @@ import PagefindSearch from './PagefindSearch.astro';
     width: min(820px, calc(100% - 2rem));
     margin-top: clamp(4.5rem, 8vh, 6.5rem);
     border-radius: var(--radius-lg);
+    border: var(--border-thick) solid var(--outline);
     background: var(--panel);
     padding: 0.95rem;
-    box-shadow: 0 22px 44px rgba(29, 29, 36, 0.16);
+    box-shadow: var(--lift) var(--lift) 0 var(--shadow);
   }
 
   .search-modal-top {
@@ -186,12 +187,12 @@ import PagefindSearch from './PagefindSearch.astro';
   .search-modal-close {
     width: 2rem;
     height: 2rem;
-    border-radius: 999px;
-    border: none;
+    border-radius: var(--radius-sm);
+    border: var(--border) solid var(--outline);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--surface-dim);
+    background: var(--panel);
     color: var(--text);
     cursor: pointer;
   }

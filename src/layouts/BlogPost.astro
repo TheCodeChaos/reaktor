@@ -86,7 +86,9 @@ const coverSrc = `${import.meta.env.BASE_URL}/og/blog/${slug}.png`.replace(/\/\/
   .article-hero {
     padding: 2rem 1.2rem;
     border-radius: var(--radius-lg);
+    border: var(--border-thick) solid var(--outline);
     background: var(--panel);
+    box-shadow: var(--lift) var(--lift) 0 var(--shadow);
   }
 
   .article-hero-inner {
@@ -95,11 +97,15 @@ const coverSrc = `${import.meta.env.BASE_URL}/og/blog/${slug}.png`.replace(/\/\/
     gap: 0.82rem;
   }
 
+  /* The cover is the generated social card, whose background matches the page
+     exactly, so without an outline it reads as a hole rather than an image. */
   .article-cover {
     width: 100%;
     height: auto;
     margin-top: 1.2rem;
     border-radius: var(--radius-lg);
+    border: var(--border-thick) solid var(--outline);
+    box-shadow: var(--lift) var(--lift) 0 var(--shadow);
   }
 
   .article-layout {
