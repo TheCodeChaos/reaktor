@@ -29171,7 +29171,7 @@ $S:2}
 A.azv.prototype={
 $1(a){var s=A.dc().b
 s=s==null?null:s.canvasKitBaseUrl
-return(s==null?"https://www.gstatic.com/flutter-canvaskit/a804b261645ef8c13eb3d5c44a5c2fb0340c5539/":s)+a},
+return(s==null?"https://www.gstatic.com/flutter-canvaskit/af7e796e161ae0bb1ff0758c71a7105418bd9ded/":s)+a},
 $S:110}
 A.KO.prototype={
 a0d(){var s=this.aiV(),r=$.bh.bB().ImageFilter.MakeColorFilter(s,null)
@@ -46342,7 +46342,7 @@ r=A.v9(B.NF,B.h,r==null?1:r)
 r.toString
 q=p.aa(q.gn())
 if(q==null)q=1
-return A.aDp(A.aIA(null,B.m,new A.uY(q,B.K8,new A.da(B.CR,this.e)),s,1,B.RZ),r)}}
+return A.aDp(A.aIA(null,B.m,new A.uY(q,B.K9,new A.da(B.CR,this.e)),s,1,B.RZ),r)}}
 A.IJ.prototype={
 l(){var s=this,r=s.bx$
 if(r!=null)r.I(s.gh8())
@@ -91914,7 +91914,7 @@ l=l.a
 o=l?B.e:B.f
 n=l?B.e:B.f
 l=l?B.e:B.f
-return A.kf(i,j.a,A.fz(!0,A.a9G(A.b([B.bN,k,B.me,q,B.S8,p,B.me,new A.wH("Shravan Goswami",o.x,B.K9,s,m),B.md,new A.wH("Jitendra Verma",n.Q,B.KT,s,m),B.md,new A.wH("Ayaan Shaikh",l.cx,B.Kw,s,m)],r),B.p0,!1),B.T,!1))}}
+return A.kf(i,j.a,A.fz(!0,A.a9G(A.b([B.bN,k,B.me,q,B.S8,p,B.me,new A.wH("Shravan Goswami",o.x,B.K7,s,m),B.md,new A.wH("Jitendra Verma",n.Q,B.KT,s,m),B.md,new A.wH("Ayaan Shaikh",l.cx,B.Kw,s,m)],r),B.p0,!1),B.T,!1))}}
 A.t2.prototype={
 H(){return"_LogoType."+this.b}}
 A.f_.prototype={}
@@ -100027,9 +100027,9 @@ B.IR=new A.qb(2,"top")
 B.pV=new A.qb(3,"center")
 B.IS=new A.qb(4,"bottom")
 B.Ks=s([1373.2198709594231,-1100.4251190754821,-7.278681089101213],t.n)
-B.K7=s([-271.815969077903,559.6580465940733,-32.46047482791194],t.n)
+B.K8=s([-271.815969077903,559.6580465940733,-32.46047482791194],t.n)
 B.Ld=s([1.9622899599665666,-57.173814538844006,308.7233197812385],t.n)
-B.IV=s([B.Ks,B.K7,B.Ld],t.zg)
+B.IV=s([B.Ks,B.K8,B.Ld],t.zg)
 B.pW=s(["text","multiline","number","phone","datetime","emailAddress","url","visiblePassword","name","address","none","webSearch","twitter"],t.s)
 B.IX=s(["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],t.s)
 B.pX=s(["Red","Blue","Green","Yellow","Purple","Magenta"],t.s)
@@ -100110,27 +100110,27 @@ B.ZD=new A.m7(8,0.12)
 B.ZC=new A.m7(12,0.14)
 B.q2=s([B.ZB,B.ZG,B.ZE,B.ZF,B.ZD,B.ZC],A.as("y<m7>"))
 B.q3=s([0,21,51,121,151,191,271,321,360],t.n)
-B.CP=new A.Ks(2,"outer")
-B.o2=new A.H(0.09803921568627451,0,0,0,B.j)
-B.h=new A.h(0,0)
-B.Dd=new A.dB(0.2,B.CP,B.o2,B.h,11)
-B.K8=s([B.Dd],t.sq)
 B.mG=new A.t2(0,"github")
 B.jX=new A.H(1,0.1411764705882353,0.1607843137254902,0.1803921568627451,B.j)
 B.a_2=new A.f_(B.mG,"GitHub","https://github.com/shravanngoswamii",B.jX)
 B.mH=new A.t2(1,"linkedin")
 B.jS=new A.H(1,0,0.4666666666666667,0.7098039215686275,B.j)
-B.a_6=new A.f_(B.mH,"LinkedIn","https://www.linkedin.com/in/shravangoswami/",B.jS)
+B.a_5=new A.f_(B.mH,"LinkedIn","https://www.linkedin.com/in/shravangoswami/",B.jS)
 B.mI=new A.t2(2,"website")
 B.jT=new A.H(1,0.3607843137254902,0.20784313725490197,0.8,B.j)
-B.a_8=new A.f_(B.mI,"Website","https://shravangoswami.com/",B.jT)
+B.a_7=new A.f_(B.mI,"Website","https://shravangoswami.com/",B.jT)
 B.Cd=new A.t2(3,"email")
 B.oo=new A.H(1,0.8509803921568627,0.18823529411764706,0.1450980392156863,B.j)
-B.a_4=new A.f_(B.Cd,"Email","mailto:contact@shravangoswami.com",B.oo)
+B.a_8=new A.f_(B.Cd,"Email","mailto:studio@shravangoswami.com",B.oo)
 B.Ce=new A.t2(4,"sponsor")
 B.op=new A.H(1,0.8784313725490196,0.17647058823529413,0.17647058823529413,B.j)
 B.a_1=new A.f_(B.Ce,"Sponsor","https://github.com/sponsors/shravanngoswamii?o=esb",B.op)
-B.K9=s([B.a_2,B.a_6,B.a_8,B.a_4,B.a_1],t.aB)
+B.K7=s([B.a_2,B.a_5,B.a_7,B.a_8,B.a_1],t.aB)
+B.CP=new A.Ks(2,"outer")
+B.o2=new A.H(0.09803921568627451,0,0,0,B.j)
+B.h=new A.h(0,0)
+B.Dd=new A.dB(0.2,B.CP,B.o2,B.h,11)
+B.K9=s([B.Dd],t.sq)
 B.Bs=new A.DE(0,"left")
 B.Bt=new A.DE(1,"right")
 B.Kc=s([B.Bs,B.Bt],A.as("y<DE>"))
@@ -100199,10 +100199,10 @@ B.KP=s([B.JA,B.Jz,B.JB,B.Kb,B.Kr],A.as("y<R<m>>"))
 B.dT=s([B.dC,B.eN,B.ho,B.hf,B.os,B.or],t.t_)
 B.a__=new A.f_(B.mG,"GitHub","https://github.com/jitendravjh",B.jX)
 B.ZX=new A.f_(B.mH,"LinkedIn","https://www.linkedin.com/in/jitendravjh/",B.jS)
-B.a_5=new A.f_(B.mI,"Website","https://jitendravjh.in/",B.jT)
+B.a_4=new A.f_(B.mI,"Website","https://jitendravjh.in/",B.jT)
 B.ZZ=new A.f_(B.Cd,"Email","mailto:jitendravjh@gmail.com",B.oo)
-B.a_7=new A.f_(B.Ce,"Sponsor","https://github.com/sponsors/jitendravjh?o=esb",B.op)
-B.KT=s([B.a__,B.ZX,B.a_5,B.ZZ,B.a_7],t.aB)
+B.a_6=new A.f_(B.Ce,"Sponsor","https://github.com/sponsors/jitendravjh?o=esb",B.op)
+B.KT=s([B.a__,B.ZX,B.a_4,B.ZZ,B.a_6],t.aB)
 B.ND=new A.h(0,2)
 B.Dc=new A.dB(0.75,B.cD,B.o2,B.ND,1.5)
 B.KW=s([B.Dc],t.sq)
