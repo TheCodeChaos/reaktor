@@ -13,33 +13,35 @@ import Layout from '../layouts/Layout.astro';
       <section class="section legal-panel" data-reveal>
         <h1 class="page-title">Privacy Policy</h1>
         <p class="lede">
-          Reaktor collects no personal data. Everything you do in the app stays on your device.
-          Effective July 24, 2026.
+          Reaktor collects nothing of its own. Your games stay on your device; the Android app's
+          ads come from Google AdMob. Effective October 2, 2026.
         </p>
 
         <div class="privacy-strip" aria-label="Privacy summary">
-          <span><strong>No ads</strong></span>
-          <span><strong>No analytics</strong></span>
           <span><strong>No accounts</strong></span>
-          <span><strong>No data leaves your device</strong></span>
+          <span><strong>Games stay on your device</strong></span>
+          <span><strong>Ads from Google AdMob, Android only</strong></span>
+          <span><strong>Your consent where the law requires it</strong></span>
         </div>
 
         <div class="legal-copy section-tight">
           <article class="policy-row">
               <h2>Who we are</h2>
               <p>
-                Reaktor is a local multiplayer strategy game for Android, developed and published by
-                Shravan Goswami. This policy covers the Reaktor mobile app distributed on Google Play
-                and this website.
+                Reaktor is a local multiplayer strategy game for Android, developed by Shravan
+                Goswami, Jitendra Verma and Ayaan Shaikh, and published on Google Play by Shravan
+                Goswami. This policy covers the Reaktor app on Google Play, the web version, and
+                this website.
               </p>
           </article>
 
           <article class="policy-row">
-              <h2>Data we collect</h2>
+              <h2>What the app collects</h2>
               <p>
-                None. The app has no advertising SDK, no analytics SDK, no crash-reporting SDK, and
-                no account system. It makes no network calls of its own and does not collect,
-                transmit, sell, or share any personal or sensitive user data.
+                Nothing of its own. Reaktor has no accounts, no analytics and no crash reporting of
+                its own, and the game sends nothing to us. The only data that leaves the Android app
+                is what Google's ads and Google Play collect, described below. We do not receive
+                that data ourselves: AdMob shows us only totals, such as how many ads were shown.
               </p>
           </article>
 
@@ -55,20 +57,85 @@ import Layout from '../layouts/Layout.astro';
           </article>
 
           <article class="policy-row">
+              <h2>Ads in the Android app</h2>
+              <p>
+                The Android app shows ads through Google AdMob, using the Google Mobile Ads SDK.
+                They are kept away from play: a small banner at the bottom of the game list,
+                leaderboard, rules, settings and about screens, and now and then a full-screen ad
+                as you leave a finished match, never after your first match and never during one.
+                Ads are limited to content rated PG, suitable for most audiences with parental
+                guidance.
+              </p>
+              <p>
+                To show ads, measure how they perform and prevent fraud, the SDK collects your
+                device's advertising ID and other device identifiers, your approximate location
+                worked out from your IP address, how you interact with ads, and diagnostics such as
+                how the app and the ads perform, and sends it to Google. Google uses this data
+                under
+                <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noreferrer">
+                  how Google uses information from sites or apps that use its services</a>
+                and
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">
+                  Google's privacy policy</a>. Without a connection no ads are requested and nothing
+                is sent, and the game plays as usual.
+              </p>
+          </article>
+
+          <article class="policy-row">
+              <h2>Your choices about ads</h2>
+              <p>
+                When the app starts, it checks with Google's consent tool, the User Messaging
+                Platform, before it asks for any ads. Where the law requires a choice, such as in
+                the European Economic Area, the UK and Switzerland, and in some US states, it shows
+                Google's consent form first, and Privacy Choices in Settings opens it again so you
+                can change your answer. Ads that are not personalised still use some data, for
+                example to limit how often you see the same ad, to measure it and to prevent fraud.
+                You can reset or delete your advertising ID, or turn off personalised ads, in your
+                phone's settings, under Privacy and then Ads, or Google and then Ads.
+              </p>
+          </article>
+
+          <article class="policy-row">
+              <h2>The Supporter pack</h2>
+              <p>
+                The Android app offers one optional purchase, the Supporter pack, which turns its
+                ads off for good. Google Play Billing handles the purchase from start to finish:
+                your payment details go to Google, under Google's privacy policy and
+                <a href="https://play.google.com/about/play-terms/" target="_blank" rel="noreferrer">
+                  Google Play's terms</a>, and never reach us. The app learns only whether the pack
+                was bought: it asks Google Play when it starts, and remembers the answer on your
+                device.
+              </p>
+          </article>
+
+          <article class="policy-row">
+              <h2>The web version</h2>
+              <p>
+                When you play Reaktor in a browser, it shows no ads, sells nothing, and loads no ad
+                or billing code. Your games and settings are saved in your browser's storage for
+                this site and are never sent to us.
+              </p>
+          </article>
+
+          <article class="policy-row">
               <h2>Permissions</h2>
               <p>
-                Reaktor requests no sensitive permissions: no location, camera, microphone,
-                contacts, or storage access. Links in the app (such as developer pages or the Play
-                Store listing) open in your browser or the Play app, where those services' own
-                policies apply.
+                The Android app has network access, which the ads and the Supporter pack need:
+                Google's ads SDK adds the internet, network state and advertising ID permissions,
+                and Google Play Billing adds its billing permission. It asks for no location,
+                camera, microphone, contacts or files. Links in the app (such as developer pages or
+                the Play Store listing) open in your browser or the Play app, where those services'
+                own policies apply.
               </p>
           </article>
 
           <article class="policy-row">
               <h2>Children</h2>
               <p>
-                Reaktor is suitable for all ages. Because the app collects no data at all, it does
-                not knowingly collect personal information from children or anyone else.
+                Reaktor is a strategy game anyone can enjoy, but it is not directed at children
+                under 13, and we do not knowingly collect personal information from them. The ads
+                in the Android app are limited to content rated PG. If you believe a child under 13
+                has used the app and have a question about their data, email us.
               </p>
           </article>
 
@@ -111,8 +178,8 @@ import Layout from '../layouts/Layout.astro';
           <article class="policy-row">
               <h2>Changes to this policy</h2>
               <p>
-                If a future version of Reaktor ever adds features that touch user data (such as
-                cloud sync), this page will be updated first and the effective date revised.
+                If a future version changes what the app does with data, this page will be updated
+                before that version is released, and the effective date revised.
               </p>
           </article>
 
@@ -183,6 +250,10 @@ import Layout from '../layouts/Layout.astro';
   .legal-copy p {
     margin: 0;
     color: var(--text-muted);
+  }
+
+  .legal-copy p + p {
+    margin-top: 0.7rem;
   }
 
   .policy-row {
