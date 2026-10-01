@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thecodechaos.github.io/reaktor/pr-previews/8/sitemap-index.xml
