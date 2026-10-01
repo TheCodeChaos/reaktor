@@ -122,7 +122,9 @@ import Layout from '../layouts/Layout.astro';
               <p>
                 The Android app has network access, which the ads and the Supporter pack need:
                 Google's ads SDK adds the internet, network state and advertising ID permissions,
-                and Google Play Billing adds its billing permission. It asks for no location,
+                the permissions Android's own ad privacy features use, and the wake lock and
+                foreground service permissions its background tasks need, and Google Play Billing
+                adds its billing permission. It asks for no location,
                 camera, microphone, contacts or files. Links in the app (such as developer pages or
                 the Play Store listing) open in your browser or the Play app, where those services'
                 own policies apply.
